@@ -96,7 +96,6 @@ const memoryController = {
 
     init() {
         memoryView.init();
-        memoryScoreView.init();
     },
 
     getAllCards() {
@@ -256,26 +255,6 @@ const memoryView = {
             });
         }
     }
-};
-
-
-//---------- APP SCORE VIEW ----------//
-const memoryScoreView = {
-  init() {
-    // DOM pointers
-    this.scorePanel = document.getElementsByClassName('score-panel')[0];
-    const restartButton = document.getElementsByClassName('restart')[0];
-
-    restartButton.addEventListener('click', () => memoryController.reloadGame());
-
-    this.render();
-
-  },
-
-  render() {
-
-  }
-
 };
 
 
