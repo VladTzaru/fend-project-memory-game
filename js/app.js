@@ -162,6 +162,8 @@ const memoryView = {
     init() {
         // DOM pointers
         this.deck = document.getElementsByClassName('deck')[0];
+        this.overlay = document.getElementById('bodyOverlay');
+
         this.render();
     },
 
@@ -219,10 +221,13 @@ const memoryView = {
 
                         // setTimeout allows the user to see the 2nd card before flipping
                         } else {
+                          // Added overlay in case the user tries to click on multiple cards too fast
+                          memoryView.overlay.classList.add('overlay');
                             setTimeout(function() {
                                 card1.classList.remove(open, show);
                                 card2.classList.remove(open, show);
                                 memoryController.clearList(openCards);
+                                memoryView.overlay.classList.remove('overlay');
                             }, 400);
                         }
                     }
