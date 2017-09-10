@@ -137,14 +137,19 @@ const memoryController = {
         return array;
     },
 
+
     incrementCount() {
       return memoryModel.counter += 2;
+    },
+
+    reloadGame() {
+      location.reload();
     },
 
     restartGame() {
       if(memoryModel.counter === 16) {
         alert('Great job, you won!');
-        location.reload();
+        this.reloadGame();
       }
     }
 
@@ -212,6 +217,7 @@ const memoryView = {
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
 
+                        // setTimeout allows the user to see the 2nd card before flipping
                         } else {
                             setTimeout(function() {
                                 card1.classList.remove(open, show);
@@ -220,6 +226,8 @@ const memoryView = {
                             }, 400);
                         }
                     }
+
+                    // Game ends
                     setTimeout(function() {
                       memoryController.restartGame();
                     }, 200);
@@ -227,6 +235,11 @@ const memoryView = {
             });
         }
     }
+};
+
+//---------- APP SCORE VIEW ----------//
+const memoryScoreView = {
+  
 };
 
 
