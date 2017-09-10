@@ -172,6 +172,10 @@ const memoryView = {
         this.deck = document.getElementsByClassName('deck')[0];
         this.overlay = document.getElementById('bodyOverlay');
         this.movesCount = document.getElementsByClassName('moves')[0];
+        this.scorePanel = document.getElementsByClassName('score-panel')[0];
+        const restartButton = document.getElementsByClassName('restart')[0];
+
+        restartButton.addEventListener('click', () => memoryController.reloadGame());
 
         this.render();
     },
