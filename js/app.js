@@ -1,6 +1,75 @@
-/*
- * Create a list that holds all of your cards
- */
+'use strict';
+
+//---------- APP MODEL ----------//
+ const memoryModel = {
+  //  A list that holds all cards
+   cards: [
+     {
+       name: 'diamond',
+       icon: 'fa fa-diamond',
+       class: 'card',
+       state: ['open', 'show'],
+       viewed: false
+     },
+     {
+       name: 'diamond',
+       class: 'card',
+       state: ['open', 'show'],
+       icon: 'fa fa-diamond',
+       viewed: false
+     }
+   ]
+ };
+
+ //---------- APP CONTROLLER ----------//
+ const memoryController = {
+   init() {memoryView.init();},
+   getAllCards() {return memoryModel.cards;}
+ };
+
+
+ //---------- APP VIEW ----------//
+ const memoryView = {
+   init() {
+     // DOM pointers
+     this.deck = document.getElementsByClassName('deck')[0];
+     this.render();
+
+   },
+
+   render() {
+     const cards = memoryController.getAllCards();
+
+     for (let card of cards) {
+
+       // Creates li and i elements
+       let liElem = document.createElement('li');
+       let iElem = document.createElement('i');
+
+       // Assigns different values (classes, names...)
+       liElem.classList.add(card.class);
+       iElem.className = card.icon;
+
+       // Append elements
+       liElem.appendChild(iElem);
+       this.deck.appendChild(liElem);
+
+
+
+
+     }
+
+   }
+ };
+
+
+
+ //---------- INVOKATIONS ----------//
+memoryController.init();
+
+
+
+
 
 
 /*
