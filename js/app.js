@@ -23,7 +23,67 @@
        name: 'plane',
        class: 'card',
        icon: 'fa fa-paper-plane-o'
-     }
+     },
+     {
+       name: 'anchor',
+       class: 'card',
+       icon: 'fa fa-anchor'
+     },
+     {
+       name: 'anchor',
+       class: 'card',
+       icon: 'fa fa-anchor'
+     },
+     {
+       name: 'bolt',
+       class: 'card',
+       icon: 'fa fa-bolt'
+     },
+     {
+       name: 'bolt',
+       class: 'card',
+       icon: 'fa fa-bolt'
+     },
+     {
+       name: 'cube',
+       class: 'card',
+       icon: 'fa fa-cube'
+     },
+     {
+       name: 'cube',
+       class: 'card',
+       icon: 'fa fa-cube'
+     },
+     {
+       name: 'leaf',
+       class: 'card',
+       icon: 'fa fa-leaf'
+     },
+     {
+       name: 'leaf',
+       class: 'card',
+       icon: 'fa fa-leaf'
+     },
+     {
+       name: 'bicycle',
+       class: 'card',
+       icon: 'fa fa-bicycle'
+     },
+     {
+       name: 'bicycle',
+       class: 'card',
+       icon: 'fa fa-bicycle'
+     },
+     {
+       name: 'bomb',
+       class: 'card',
+       icon: 'fa fa-bomb'
+     },
+     {
+       name: 'bomb',
+       class: 'card',
+       icon: 'fa fa-bomb'
+     },
    ],
    openCards: [],
    state: ['open', 'show', 'match'],
@@ -32,53 +92,66 @@
 
  //---------- APP CONTROLLER ----------//
  const memoryController = {
+
    init() {memoryView.init();},
-   getAllCards() {return memoryModel.cards;},
-   getOpenCards() {return memoryModel.openCards;},
-   openCard() {return memoryModel.state[0];},
-   showCard() {return memoryModel.state[1];},
-   closeCard(el) {
-     const open = this.openCard();
-     const show = this.showCard();
-     el.classList.remove(open, show);
-   },
-   matchedCard() {return memoryModel.state[2];},
-   checkIfMatch(icon) {
-     const cards = this.getOpenCards();
-     const state = this.matchedCard();
-     if (cards[0].classList.contains[icon] && cards[1].classList.contains[icon]) {
-       return state;
-     } else {
-       console.log('fire');
+
+   getAllCards() { return memoryModel.cards; },
+
+   getOpenCards() { return memoryModel.openCards; },
+
+   clearList(arr) { arr = 0; return arr; },
+
+   openCard() { return memoryModel.state[0]; },
+
+   showCard() { return memoryModel.state[1]; },
+
+   matchedCard() { return memoryModel.state[2]; },
+
+   // Shuffle function from http://stackoverflow.com/a/2450976
+   shuffle(array) {
+     let currentIndex = array.length, temporaryValue, randomIndex;
+
+     while (currentIndex !== 0) {
+       randomIndex = Math.floor(Math.random() * currentIndex);
+       currentIndex -= 1;
+       temporaryValue = array[currentIndex];
+       array[currentIndex] = array[randomIndex];
+       array[randomIndex] = temporaryValue;
      }
+
+     return array;
    }
+
  };
 
 
  //---------- APP VIEW ----------//
  const memoryView = {
+
    init() {
      // DOM pointers
      this.deck = document.getElementsByClassName('deck')[0];
      this.render();
-
    },
 
    render() {
      // Card lists
-     const cards = memoryController.getAllCards();
+     const cards     = memoryController.getAllCards();
      const openCards = memoryController.getOpenCards();
 
+     // Shuffle cards
+     memoryController.shuffle(cards);
+
      // Card states
-     const open = memoryController.openCard();
-     const show = memoryController.showCard();
+     const open  = memoryController.openCard();
+     const show  = memoryController.showCard();
      const match = memoryController.matchedCard();
 
      for (let card of cards) {
 
        // Creates li and i elements
        let liElem = document.createElement('li');
-       let iElem = document.createElement('i');
+       let iElem  = document.createElement('i');
 
        // Assigns different values (classes, names...)
        liElem.classList.add(card.class, card.name);
@@ -91,38 +164,35 @@
        // Sets up the event listener for a card
        liElem.addEventListener('click', function () {
          liElem.classList.add(open, show);
+
+         // Adds the card to a *list* of "open" cards
          openCards.push(liElem);
 
+         let openCardslen = openCards.length;
 
-         if (openCards.length === 2) {
-           if (openCards[0].classList.contains(card.name) && openCards[1].classList.contains(card.name) ) {
-             openCards[0].classList.add(match);
-             openCards[1].classList.add(match);
-             setTimeout(function() {})
-             openCards.length = 0;
+         if (openCardslen === 2) {
+
+           let card1 = openCards[0];
+           let card2 = openCards[1];
+
+           if (card1.classList.contains(card.name) && card2.classList.contains(card.name) ) {
+             card1.classList.add(match);
+             card2.classList.add(match);
+             openCardslen = 0;
+
            } else {
              setTimeout(function() {
-               openCards[0].classList.remove(open, show);
-               openCards[1].classList.remove(open, show);
-               openCards.length = 0;
-             },1000)
+               card1.classList.remove(open, show);
+               card2.classList.remove(open, show);
+               openCardslen = 0;
+             }, 300);
            }
+
          }
-
-
-        // Adds the card to a *list* of "open" cards
-
-
        });
-
-
-
-
      }
-
    }
  };
-
 
 
  //---------- INVOKATIONS ----------//
@@ -140,20 +210,7 @@ memoryController.init();
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
 
 
 /*
