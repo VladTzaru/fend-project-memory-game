@@ -135,6 +135,10 @@ const memoryController = {
         }
 
         return array;
+    },
+
+    incrementCount() {
+      return memoryModel.counter += 2;
     }
 
 };
@@ -196,6 +200,7 @@ const memoryView = {
                         let card2 = openCards[1];
 
                         if ( card1.classList.contains(card.name) && card2.classList.contains(card.name) ) {
+                            memoryController.incrementCount();
                             card1.classList.add(match);
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
@@ -217,6 +222,8 @@ const memoryView = {
 
 //---------- INVOKATIONS ----------//
 memoryController.init();
+
+
 
 
 
