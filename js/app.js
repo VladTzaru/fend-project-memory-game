@@ -139,6 +139,13 @@ const memoryController = {
 
     incrementCount() {
       return memoryModel.counter += 2;
+    },
+
+    restartGame() {
+      if(memoryModel.counter === 16) {
+        alert('Great job, you won!');
+        location.reload();
+      }
     }
 
 };
@@ -213,6 +220,9 @@ const memoryView = {
                             }, 400);
                         }
                     }
+                    setTimeout(function() {
+                      memoryController.restartGame();
+                    }, 200);
                 }
             });
         }
