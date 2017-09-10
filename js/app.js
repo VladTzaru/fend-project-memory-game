@@ -87,7 +87,8 @@ const memoryModel = {
     ],
     openCards: [],
     state: ['open', 'show', 'match'],
-    counter: 0
+    counter: 0,
+    moves: 0
 };
 
 //---------- APP CONTROLLER ----------//
@@ -104,6 +105,10 @@ const memoryController = {
 
     getOpenCards() {
         return memoryModel.openCards;
+    },
+
+    showNumOfMoves() {
+        return memoryModel.moves;
     },
 
     clearList(arr) {
@@ -142,6 +147,10 @@ const memoryController = {
       return memoryModel.counter += 2;
     },
 
+    incrementMoves() {
+      return memoryModel.moves += 1;
+    },
+
     reloadGame() {
       location.reload();
     },
@@ -163,6 +172,7 @@ const memoryView = {
         // DOM pointers
         this.deck = document.getElementsByClassName('deck')[0];
         this.overlay = document.getElementById('bodyOverlay');
+        this.movesCount = document.getElementsByClassName('moves')[0];
 
         this.render();
     },
@@ -197,11 +207,17 @@ const memoryView = {
             // Sets up the event listener for a card
             liElem.addEventListener('click', function() {
 
+
                 // Prevents multiple pushes of the same card
                 if (liElem.classList.contains(open, show)) {
                     return false;
 
                 } else {
+
+                    // Increment moves
+                    memoryController.incrementMoves();
+                    memoryView.movesCount.textContent = memoryController.showNumOfMoves();
+
                     liElem.classList.add(open, show);
 
                     // Adds the card to a *list* of "open" cards
@@ -248,7 +264,6 @@ const memoryScoreView = {
   init() {
     // DOM pointers
     this.scorePanel = document.getElementsByClassName('score-panel')[0];
-    this.movesCount = document.getElementsByClassName('moves')[0];
     const restartButton = document.getElementsByClassName('restart')[0];
 
     restartButton.addEventListener('click', () => memoryController.reloadGame());
