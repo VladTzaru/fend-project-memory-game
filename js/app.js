@@ -13,10 +13,20 @@
        name: 'diamond',
        class: 'card',
        icon: 'fa fa-diamond'
+     },
+     {
+       name: 'plane',
+       class: 'card',
+       icon: 'fa fa-paper-plane-o'
+     },
+     {
+       name: 'plane',
+       class: 'card',
+       icon: 'fa fa-paper-plane-o'
      }
    ],
    openCards: [],
-   state: ['open', 'show'],
+   state: ['open', 'show', 'match'],
    counter: 0
  };
 
@@ -24,8 +34,24 @@
  const memoryController = {
    init() {memoryView.init();},
    getAllCards() {return memoryModel.cards;},
+   getOpenCards() {return memoryModel.openCards;},
    openCard() {return memoryModel.state[0];},
-   showCard() {return memoryModel.state[1];}
+   showCard() {return memoryModel.state[1];},
+   closeCard(el) {
+     const open = this.openCard();
+     const show = this.showCard();
+     el.classList.remove(open, show);
+   },
+   matchedCard() {return memoryModel.state[2];},
+   checkIfMatch(icon) {
+     const cards = this.getOpenCards();
+     const state = this.matchedCard();
+     if (cards[0].classList.contains[icon] && cards[1].classList.contains[icon]) {
+       return state;
+     } else {
+       console.log('fire');
+     }
+   }
  };
 
 
@@ -39,11 +65,14 @@
    },
 
    render() {
+     // Card lists
      const cards = memoryController.getAllCards();
+     const openCards = memoryController.getOpenCards();
 
      // Card states
      const open = memoryController.openCard();
      const show = memoryController.showCard();
+     const match = memoryController.matchedCard();
 
      for (let card of cards) {
 
@@ -52,7 +81,7 @@
        let iElem = document.createElement('i');
 
        // Assigns different values (classes, names...)
-       liElem.classList.add(card.class);
+       liElem.classList.add(card.class, card.name);
        iElem.className = card.icon;
 
        // Append elements
@@ -62,6 +91,26 @@
        // Sets up the event listener for a card
        liElem.addEventListener('click', function () {
          liElem.classList.add(open, show);
+         openCards.push(liElem);
+
+
+         if (openCards.length === 2) {
+           if (openCards[0].classList.contains(card.name) && openCards[1].classList.contains(card.name) ) {
+             openCards[0].classList.add(match);
+             openCards[1].classList.add(match);
+             setTimeout(function() {})
+             openCards.length = 0;
+           } else {
+             setTimeout(function() {
+               openCards[0].classList.remove(open, show);
+               openCards[1].classList.remove(open, show);
+               openCards.length = 0;
+             },1000)
+           }
+         }
+
+
+        // Adds the card to a *list* of "open" cards
 
 
        });
