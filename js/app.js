@@ -7,24 +7,25 @@
      {
        name: 'diamond',
        icon: 'fa fa-diamond',
-       class: 'card',
-       state: ['open', 'show'],
-       viewed: false
+       class: 'card'
      },
      {
        name: 'diamond',
        class: 'card',
-       state: ['open', 'show'],
-       icon: 'fa fa-diamond',
-       viewed: false
+       icon: 'fa fa-diamond'
      }
-   ]
+   ],
+   openCards: [],
+   state: ['open', 'show'],
+   counter: 0
  };
 
  //---------- APP CONTROLLER ----------//
  const memoryController = {
    init() {memoryView.init();},
-   getAllCards() {return memoryModel.cards;}
+   getAllCards() {return memoryModel.cards;},
+   openCard() {return memoryModel.state[0];},
+   showCard() {return memoryModel.state[1];}
  };
 
 
@@ -40,6 +41,10 @@
    render() {
      const cards = memoryController.getAllCards();
 
+     // Card states
+     const open = memoryController.openCard();
+     const show = memoryController.showCard();
+
      for (let card of cards) {
 
        // Creates li and i elements
@@ -53,6 +58,13 @@
        // Append elements
        liElem.appendChild(iElem);
        this.deck.appendChild(liElem);
+
+       // Sets up the event listener for a card
+       liElem.addEventListener('click', function () {
+         liElem.classList.add(open, show);
+
+
+       });
 
 
 
