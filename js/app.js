@@ -95,6 +95,7 @@ const memoryController = {
 
     init() {
         memoryView.init();
+        memoryScoreView.init();
     },
 
     getAllCards() {
@@ -136,7 +137,6 @@ const memoryController = {
 
         return array;
     },
-
 
     incrementCount() {
       return memoryModel.counter += 2;
@@ -237,9 +237,25 @@ const memoryView = {
     }
 };
 
+
 //---------- APP SCORE VIEW ----------//
 const memoryScoreView = {
-  
+  init() {
+    // DOM pointers
+    this.scorePanel = document.getElementsByClassName('score-panel')[0];
+    this.movesCount = document.getElementsByClassName('moves')[0];
+    const restartButton = document.getElementsByClassName('restart')[0];
+
+    restartButton.addEventListener('click', () => memoryController.reloadGame());
+
+    this.render();
+
+  },
+
+  render() {
+
+  }
+
 };
 
 
