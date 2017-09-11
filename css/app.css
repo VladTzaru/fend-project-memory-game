@@ -71,19 +71,20 @@ h1 {
 }
 
 .deck .card.open {
-  transform: rotateY(0);
   background: #02b3e4;
   cursor: default;
-}
-
-.deck .card.show {
   font-size: 33px;
+  transition: all .3s;
 }
 
 .deck .card.match {
   cursor: default;
   background: #02ccba;
   font-size: 33px;
+}
+
+.deck .card.mismatch {
+  background-color: #F44336;
 }
 
 /*

@@ -86,7 +86,7 @@ const memoryModel = {
         }
     ],
     openCards: [],
-    state: ['open', 'show', 'match'],
+    state: ['open', 'match', 'mismatch'],
     counter: 0,
     moves: 0
 };
@@ -119,11 +119,11 @@ const memoryController = {
         return memoryModel.state[0];
     },
 
-    showCard() {
+    matchedCard() {
         return memoryModel.state[1];
     },
 
-    matchedCard() {
+    mismatchedCard() {
         return memoryModel.state[2];
     },
 
@@ -204,8 +204,8 @@ const memoryView = {
 
         // Card states
         const open = memoryController.openCard();
-        const show = memoryController.showCard();
         const match = memoryController.matchedCard();
+        const mismatch = memoryController.mismatchedCard();
 
         // Start timer
         const timer = setInterval(memoryController.timer, 1000);
@@ -231,7 +231,7 @@ const memoryView = {
               let numOfMoves = memoryController.showNumOfMoves();
 
                 // Prevents multiple pushes of the same card
-                if (liElem.classList.contains(open, show)) {
+                if (liElem.classList.contains(open)) {
                     return false;
 
                 } else {
@@ -252,7 +252,7 @@ const memoryView = {
 
                     }
 
-                    liElem.classList.add(open, show);
+                    liElem.classList.add(open);
 
                     // Adds the card to a *list* of "open" cards
                     openCards.push(liElem);
@@ -272,14 +272,16 @@ const memoryView = {
                         } else {
                           // Added overlay in case the user tries to click on multiple cards too fast
                           memoryView.overlay.classList.add('overlay');
+                          card1.classList.add(mismatch);
+                          card2.classList.add(mismatch);
 
                           // setTimeout allows the user to see the 2nd card before flipping
                             setTimeout(function() {
-                                card1.classList.remove(open, show);
-                                card2.classList.remove(open, show);
+                                card1.classList.remove(open, mismatch);
+                                card2.classList.remove(open, mismatch);
                                 memoryController.clearList(openCards);
                                 memoryView.overlay.classList.remove('overlay');
-                            }, 400);
+                            }, 800);
                         }
                     }
 
