@@ -159,6 +159,7 @@ const memoryController = {
         let totalSeconds = 0;
         return function() {
             ++totalSeconds;
+            // Hours are included in case someone falls asleep
             let hour = Math.floor(totalSeconds / 3600);
             let minute = Math.floor((totalSeconds - hour * 3600) / 60);
             let seconds = totalSeconds - (hour * 3600 + minute * 60);

@@ -35,9 +35,7 @@ body {
 }
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
+  font: 3em Monoton, sans-serif;
   color: rgba(46, 61, 73, 0.68);
 }
 
@@ -56,7 +54,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 3em;
+  margin: 0 0 5em;
 }
 
 
@@ -111,6 +109,11 @@ h1 {
   padding: 0;
   display: inline-block;
   margin: 0 5px 0 0;
+  color: rgba(255,162,52,0.8);
+}
+
+.score-panel .moves {
+  text-transform: uppercase;
 }
 
 .score-panel .stars li {
@@ -121,6 +124,13 @@ h1 {
 .score-panel .restart {
   float: right;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: ease-in .3s;
+  color: rgb(152, 78, 197);
+}
+
+.score-panel .restart:hover {
+  color: inherit;
 }
 
 .overlay {
@@ -208,5 +218,33 @@ h1 {
 }
 
 .btn-reloadGame:hover {
-  background-color: #388E3C;
+  background-color: rgb(152, 78, 197);
+}
+
+footer {
+  width: 100%;
+  padding: 1em;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+}
+
+footer .copyright {
+  text-align: center;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: .8em;
+}
+
+footer #social-media {
+  text-align: center;
+}
+
+footer #social-media .social-media-link {
+  font-size: 2em;
+  margin-right: .3em;
+  color: inherit;
+  transition: all .3s;
+}
+
+footer #social-media .social-media-link:hover {
+  color: #fff;
 }
