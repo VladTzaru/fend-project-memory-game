@@ -156,13 +156,25 @@ const memoryController = {
 
     restartGame() {
       if(memoryModel.counter === 16) {
+        clearInterval(this.timer);
         alert('Great job, you won!');
         this.reloadGame();
       }
-    }
+    },
+
+    timer: (function () {
+      let totalSeconds = 0;
+      return function () {
+        ++totalSeconds;
+        let hour = Math.floor(totalSeconds / 3600);
+        let minute = Math.floor((totalSeconds - hour * 3600) / 60);
+        let seconds = totalSeconds - (hour * 3600 + minute * 60);
+
+        document.getElementById("timer").innerHTML = minute + ":" + seconds;
+      }
+    })(),
 
 };
-
 
 //---------- APP VIEW ----------//
 const memoryView = {
@@ -173,6 +185,7 @@ const memoryView = {
         this.overlay = document.getElementById('bodyOverlay');
         this.movesCount = document.getElementsByClassName('moves')[0];
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
+        this.timer = document.getElementById('timer');
         const restartButton = document.getElementsByClassName('restart')[0];
 
         // stars
@@ -196,6 +209,9 @@ const memoryView = {
         const open = memoryController.openCard();
         const show = memoryController.showCard();
         const match = memoryController.matchedCard();
+
+        // Start timer
+        const timer = setInterval(memoryController.timer, 1000);
 
         for (let card of cards) {
 
@@ -279,6 +295,12 @@ const memoryView = {
 
 //---------- INVOKATIONS ----------//
 memoryController.init();
+
+
+
+
+
+
 
 
 
