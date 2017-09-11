@@ -154,14 +154,6 @@ const memoryController = {
       location.reload();
     },
 
-    restartGame() {
-      if(memoryModel.counter === 16) {
-        clearInterval(this.timer);
-        alert('Great job, you won!');
-        this.reloadGame();
-      }
-    },
-
     timer: (function () {
       let totalSeconds = 0;
       return function () {
@@ -185,14 +177,16 @@ const memoryView = {
         this.overlay = document.getElementById('bodyOverlay');
         this.movesCount = document.getElementsByClassName('moves')[0];
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
-        this.timer = document.getElementById('timer');
+        this.congratulationsPopup = document.getElementById('congratulations-popup');
         const restartButton = document.getElementsByClassName('restart')[0];
+        const scorePanelBtnReload = document.getElementById('btn-reloadGame');
 
         // stars
         this.star2 = document.getElementById('star2');
         this.star3 = document.getElementById('star3');
 
         restartButton.addEventListener('click', () => memoryController.reloadGame());
+        scorePanelBtnReload.addEventListener('click', () => memoryController.reloadGame());
 
         this.render();
     },
@@ -220,7 +214,7 @@ const memoryView = {
             let iElem = document.createElement('i');
 
             // Assigns different values (classes, names...)
-            liElem.classList.add(card.class, card.name);
+            liElem.classList.add(card.class, card.name, show);
             iElem.className = card.icon;
 
             // Append elements
@@ -283,9 +277,12 @@ const memoryView = {
                     }
 
                     // Game ends
-                    setTimeout(function() {
-                      memoryController.restartGame();
-                    }, 200);
+                    if (memoryModel.counter === 16) {
+                      clearInterval(timer);
+                      setTimeout(function() {
+                        memoryView.congratulationsPopup.style.display = 'block';
+                      }, 200);
+                    }
                 }
             });
         }
