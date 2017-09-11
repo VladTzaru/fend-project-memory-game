@@ -17,12 +17,24 @@
             <h1>Matching Game</h1>
         </header>
 
-        <section class="overlay" id="congratulations-popup">
+        <!-- congratulations popup -->
+        <section id="congratulations-popup">
           <div class="congratulations-popup-scoreBoard">
             <h4>Your time:</h4>
             <p id="timer">0:0</p>
+
+            <h4>Moves</h4>
+            <span id='movesPopup'>0</span>
+            <ul class="stars">
+          		<li><i class="fa fa-star"></i></li>
+          		<li id="star2-copy"><i class="fa fa-star"></i></li>
+          		<li id="star3-copy"><i class="fa fa-star"></i></li>
+          	</ul>
+
+            <h4>Stars</h4>
+
             <hr>
-            <button id="btn-reloadGame">Start over</button>
+            <button id="btn-reloadGame">Play again</button>
           </div>
         </section>
 
@@ -33,7 +45,8 @@
         		<li id="star3"><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves">0</span> Moves
+        	<span class="moves">0</span>
+          <span class="moves">Moves</span>
 
             <div class="restart"><i class="fa fa-repeat"></i></div>
         </section>

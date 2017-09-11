@@ -176,6 +176,7 @@ const memoryView = {
         this.deck = document.getElementsByClassName('deck')[0];
         this.overlay = document.getElementById('bodyOverlay');
         this.movesCount = document.getElementsByClassName('moves')[0];
+        this.movesCountPopup = document.getElementById('movesPopup');
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
         const restartButton = document.getElementsByClassName('restart')[0];
@@ -184,6 +185,8 @@ const memoryView = {
         // stars
         this.star2 = document.getElementById('star2');
         this.star3 = document.getElementById('star3');
+        this.star2_copy = document.getElementById('star2-copy');
+        this.star3_copy = document.getElementById('star3-copy');
 
         restartButton.addEventListener('click', () => memoryController.reloadGame());
         scorePanelBtnReload.addEventListener('click', () => memoryController.reloadGame());
@@ -214,7 +217,7 @@ const memoryView = {
             let iElem = document.createElement('i');
 
             // Assigns different values (classes, names...)
-            liElem.classList.add(card.class, card.name, show);
+            liElem.classList.add(card.class, card.name);
             iElem.className = card.icon;
 
             // Append elements
@@ -236,13 +239,17 @@ const memoryView = {
                     // Increment moves
                     memoryController.incrementMoves();
                     memoryView.movesCount.textContent = memoryController.showNumOfMoves();
+                    memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
 
                     // Removes stars depending on the number of moves
                     if (numOfMoves === 26) {
                       memoryView.star3.className = 'hide-star';
+                      memoryView.star3_copy.className = 'hide-star';
 
                     } else if (numOfMoves === 40) {
                       memoryView.star2.className = 'hide-star';
+                      memoryView.star2_copy.className = 'hide-star';
+
                     }
 
                     liElem.classList.add(open, show);
