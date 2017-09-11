@@ -240,11 +240,6 @@ const memoryView = {
 
                 } else {
 
-                    // Increment moves
-                    memoryController.incrementMoves();
-                    memoryView.movesCount.textContent = memoryController.showNumOfMoves();
-                    memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
-
                     // Removes stars depending on the number of moves
                     if (numOfMoves === 26) {
                         memoryView.star3.className = 'hide-star';
@@ -273,11 +268,22 @@ const memoryView = {
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
 
+                            // Increment and display moves
+                            memoryController.incrementMoves();
+                            memoryView.movesCount.textContent = memoryController.showNumOfMoves();
+                            memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
+
                         } else {
                             // Added overlay in case the user tries to click on multiple cards too fast
                             memoryView.overlay.classList.add('overlay');
                             card1.classList.add(mismatch);
                             card2.classList.add(mismatch);
+
+                            // Increment and display moves
+                            memoryController.incrementMoves();
+                            memoryView.movesCount.textContent = memoryController.showNumOfMoves();
+                            memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
+
 
                             // setTimeout allows the user to see the 2nd card before flipping
                             setTimeout(function() {
