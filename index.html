@@ -20,21 +20,33 @@
         <!-- congratulations popup -->
         <section id="congratulations-popup">
           <div class="congratulations-popup-scoreBoard">
-            <h4>Your time:</h4>
-            <p id="timer">0:0</p>
+            <h2 class="congratulations-title">Congratulations!</h2>
+            <p class="congratulations-message">You won!</p>
 
-            <h4>Moves</h4>
-            <span id='movesPopup'>0</span>
-            <ul class="stars">
-          		<li><i class="fa fa-star"></i></li>
-          		<li id="star2-copy"><i class="fa fa-star"></i></li>
-          		<li id="star3-copy"><i class="fa fa-star"></i></li>
-          	</ul>
+            <div class="center-elements">
+              <p class="congratulations-metric-title">Time:</p>
+              <span id="timer">0:0</span>
+            </div>
 
-            <h4>Stars</h4>
+            <div class="center-elements">
+              <p class="congratulations-metric-title">Moves:</p>
+              <span id='movesPopup'>0</span>
+            </div>
+
+            <div class="center-elements">
+              <p class="congratulations-metric-title">Stars:</p>
+              <ul class="congratulations-stars">
+                <li><i class="fa fa-star"></i></li>
+                <li id="star2-copy"><i class="fa fa-star"></i></li>
+                <li id="star3-copy"><i class="fa fa-star"></i></li>
+              </ul>
+            </div>
+
+
+
 
             <hr>
-            <button id="btn-reloadGame">Play again</button>
+            <button class="btn-reloadGame" id="btn-reloadGame">Play again</button>
           </div>
         </section>
 
