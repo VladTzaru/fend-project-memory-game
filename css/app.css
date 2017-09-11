@@ -44,7 +44,7 @@ h1 {
 */
 
 .deck {
-  width: 660px;
+  max-width: 660px;
   min-height: 680px;
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
@@ -131,6 +131,12 @@ h1 {
 
 .score-panel .restart:hover {
   color: inherit;
+}
+
+.score-panel .timer {
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: 0;
 }
 
 .overlay {
@@ -248,4 +254,23 @@ footer #social-media .social-media-link {
 
 footer #social-media .social-media-link:hover {
   color: #fff;
+}
+
+/* Media Q's */
+@media only screen and (max-width: 570px) {
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .deck .card {
+    height: 80px;
+    width: 80px;
+    font-size: 0;
+    box-shadow: none;
+  }
+
+  .score-panel {
+    width: 288px;
+  }
 }
