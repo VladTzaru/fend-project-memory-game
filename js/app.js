@@ -241,11 +241,11 @@ const memoryView = {
                 } else {
 
                     // Removes stars depending on the number of moves
-                    if (numOfMoves === 26) {
+                    if (numOfMoves === 13) {
                         memoryView.star3.className = 'hide-star';
                         memoryView.star3_copy.className = 'hide-star';
 
-                    } else if (numOfMoves === 40) {
+                    } else if (numOfMoves === 20) {
                         memoryView.star2.className = 'hide-star';
                         memoryView.star2_copy.className = 'hide-star';
 
