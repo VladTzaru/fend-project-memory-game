@@ -189,6 +189,7 @@ h1 {
   padding: 0;
   list-style-type: none;
   display: inline-block;
+  color: rgba(255,162,52,0.8);
 }
 
 .congratulations-stars li {
