@@ -165,6 +165,7 @@ const memoryController = {
             let seconds = totalSeconds - (hour * 3600 + minute * 60);
 
             document.getElementById("timer").innerHTML = minute + ":" + seconds;
+            document.getElementsByClassName('timer')[0].innerHTML = minute + ':' + seconds;
         };
     })(),
 
