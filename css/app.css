@@ -135,7 +135,7 @@ h1 {
 
 .score-panel .timer {
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin-top: 0;
 }
 
@@ -260,17 +260,21 @@ footer #social-media .social-media-link:hover {
 @media only screen and (max-width: 570px) {
 
   h1 {
-    font-size: 2em;
+    font-size: 1.8em;
+  }
+
+  .deck {
+    justify-content: space-around;
   }
 
   .deck .card {
     height: 80px;
     width: 80px;
-    font-size: 0;
     box-shadow: none;
   }
 
   .score-panel {
     width: 288px;
   }
+
 }
