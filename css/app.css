@@ -14,6 +14,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  color: #2e3d49;
 }
 
 body {
@@ -35,7 +36,9 @@ body {
 
 h1 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(46, 61, 73, 0.68);
 }
 
 /*
@@ -56,6 +59,7 @@ h1 {
   margin: 0 0 3em;
 }
 
+
 .deck .card {
   height: 125px;
   width: 125px;
@@ -68,6 +72,11 @@ h1 {
   justify-content: center;
   align-items: center;
   box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  transition: all .3s;
+}
+
+.deck .card:hover {
+  background-color: rgba(46, 61, 73, 0.90);
 }
 
 .deck .card.open {
@@ -192,7 +201,7 @@ h1 {
   font-size: 1.4rem;
   border-radius: 4px;
   border: none;
-  background-color: #2E7D32;
+  background-color: #02ccba;
   color: white;
   font-weight: 600;
   transition: all .3s;
