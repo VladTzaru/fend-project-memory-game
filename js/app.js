@@ -3,8 +3,7 @@
 //---------- APP MODEL ----------//
 const memoryModel = {
     //  A list that holds all cards
-    cards: [
-        {
+    cards: [{
             name: 'diamond',
             icon: 'fa fa-diamond',
             class: 'card'
@@ -91,6 +90,7 @@ const memoryModel = {
     moves: 0
 };
 
+
 //---------- APP CONTROLLER ----------//
 const memoryController = {
 
@@ -129,7 +129,8 @@ const memoryController = {
 
     // Shuffle function from http://stackoverflow.com/a/2450976
     shuffle(array) {
-        let currentIndex = array.length, temporaryValue, randomIndex;
+        let currentIndex = array.length,
+            temporaryValue, randomIndex;
 
         while (currentIndex !== 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -143,30 +144,31 @@ const memoryController = {
     },
 
     incrementCount() {
-      return memoryModel.counter += 2;
+        return memoryModel.counter += 2;
     },
 
     incrementMoves() {
-      return memoryModel.moves += 1;
+        return memoryModel.moves += 1;
     },
 
     reloadGame() {
-      location.reload();
+        location.reload();
     },
 
-    timer: (function () {
-      let totalSeconds = 0;
-      return function () {
-        ++totalSeconds;
-        let hour = Math.floor(totalSeconds / 3600);
-        let minute = Math.floor((totalSeconds - hour * 3600) / 60);
-        let seconds = totalSeconds - (hour * 3600 + minute * 60);
+    timer: (function() {
+        let totalSeconds = 0;
+        return function() {
+            ++totalSeconds;
+            let hour = Math.floor(totalSeconds / 3600);
+            let minute = Math.floor((totalSeconds - hour * 3600) / 60);
+            let seconds = totalSeconds - (hour * 3600 + minute * 60);
 
-        document.getElementById("timer").innerHTML = minute + ":" + seconds;
-      }
+            document.getElementById("timer").innerHTML = minute + ":" + seconds;
+        };
     })(),
 
 };
+
 
 //---------- APP VIEW ----------//
 const memoryView = {
@@ -227,8 +229,8 @@ const memoryView = {
             // Sets up the event listener for a card
             liElem.addEventListener('click', function() {
 
-              // Get a number of moves
-              let numOfMoves = memoryController.showNumOfMoves();
+                // Get a number of moves
+                let numOfMoves = memoryController.showNumOfMoves();
 
                 // Prevents multiple pushes of the same card
                 if (liElem.classList.contains(open)) {
@@ -243,12 +245,12 @@ const memoryView = {
 
                     // Removes stars depending on the number of moves
                     if (numOfMoves === 26) {
-                      memoryView.star3.className = 'hide-star';
-                      memoryView.star3_copy.className = 'hide-star';
+                        memoryView.star3.className = 'hide-star';
+                        memoryView.star3_copy.className = 'hide-star';
 
                     } else if (numOfMoves === 40) {
-                      memoryView.star2.className = 'hide-star';
-                      memoryView.star2_copy.className = 'hide-star';
+                        memoryView.star2.className = 'hide-star';
+                        memoryView.star2_copy.className = 'hide-star';
 
                     }
 
@@ -263,19 +265,19 @@ const memoryView = {
                         let card1 = openCards[0];
                         let card2 = openCards[1];
 
-                        if ( card1.classList.contains(card.name) && card2.classList.contains(card.name) ) {
+                        if (card1.classList.contains(card.name) && card2.classList.contains(card.name)) {
                             memoryController.incrementCount();
                             card1.classList.add(match);
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
 
                         } else {
-                          // Added overlay in case the user tries to click on multiple cards too fast
-                          memoryView.overlay.classList.add('overlay');
-                          card1.classList.add(mismatch);
-                          card2.classList.add(mismatch);
+                            // Added overlay in case the user tries to click on multiple cards too fast
+                            memoryView.overlay.classList.add('overlay');
+                            card1.classList.add(mismatch);
+                            card2.classList.add(mismatch);
 
-                          // setTimeout allows the user to see the 2nd card before flipping
+                            // setTimeout allows the user to see the 2nd card before flipping
                             setTimeout(function() {
                                 card1.classList.remove(open, mismatch);
                                 card2.classList.remove(open, mismatch);
@@ -287,10 +289,11 @@ const memoryView = {
 
                     // Game ends
                     if (memoryModel.counter === 16) {
-                      clearInterval(timer);
-                      setTimeout(function() {
-                        memoryView.congratulationsPopup.style.display = 'block';
-                      }, 200);
+                        clearInterval(timer);
+                        setTimeout(function() {
+                            // If all cards have matched, display a message with the final score
+                            memoryView.congratulationsPopup.style.display = 'block';
+                        }, 200);
                     }
                 }
             });
@@ -301,35 +304,3 @@ const memoryView = {
 
 //---------- INVOKATIONS ----------//
 memoryController.init();
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
