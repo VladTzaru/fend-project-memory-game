@@ -175,6 +175,10 @@ const memoryView = {
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         const restartButton = document.getElementsByClassName('restart')[0];
 
+        // stars
+        this.star2 = document.getElementById('star2');
+        this.star3 = document.getElementById('star3');
+
         restartButton.addEventListener('click', () => memoryController.reloadGame());
 
         this.render();
@@ -210,6 +214,8 @@ const memoryView = {
             // Sets up the event listener for a card
             liElem.addEventListener('click', function() {
 
+              // Get a number of moves
+              let numOfMoves = memoryController.showNumOfMoves();
 
                 // Prevents multiple pushes of the same card
                 if (liElem.classList.contains(open, show)) {
@@ -220,6 +226,14 @@ const memoryView = {
                     // Increment moves
                     memoryController.incrementMoves();
                     memoryView.movesCount.textContent = memoryController.showNumOfMoves();
+
+                    // Removes stars depending on the number of moves
+                    if (numOfMoves === 26) {
+                      memoryView.star3.className = 'hide-star';
+
+                    } else if (numOfMoves === 40) {
+                      memoryView.star2.className = 'hide-star';
+                    }
 
                     liElem.classList.add(open, show);
 
@@ -238,10 +252,11 @@ const memoryView = {
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
 
-                        // setTimeout allows the user to see the 2nd card before flipping
                         } else {
                           // Added overlay in case the user tries to click on multiple cards too fast
                           memoryView.overlay.classList.add('overlay');
+
+                          // setTimeout allows the user to see the 2nd card before flipping
                             setTimeout(function() {
                                 card1.classList.remove(open, show);
                                 card2.classList.remove(open, show);
