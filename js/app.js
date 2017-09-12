@@ -160,19 +160,23 @@ const memoryController = {
         location.reload();
     },
 
-    timer: (function() {
-        let totalSeconds = 0;
-        return function() {
-            ++totalSeconds;
-            // Hours are included in case someone falls asleep
-            let hour = Math.floor(totalSeconds / 3600);
-            let minute = Math.floor((totalSeconds - hour * 3600) / 60);
-            let seconds = totalSeconds - (hour * 3600 + minute * 60);
+    startTime() {
+      console.log(new Date());
+      return new Date();
+    },
 
-            document.getElementById("timer").innerHTML = minute + ":" + seconds;
-            document.getElementsByClassName('timer')[0].innerHTML = minute + ':' + seconds;
-        };
-    })(),
+    endTime(startT) {
+      let endTime = new Date();
+      let timeDiff = endTime - startT; //in ms
+      // strip the ms
+      timeDiff /= 1000;
+
+      // get seconds
+      let seconds = Math.round(timeDiff % 60);
+      let minutes = Math.floor(timeDiff / 60);
+
+      return (`${minutes} min ${seconds} sec`);
+    }
 
 };
 
@@ -188,6 +192,7 @@ const memoryView = {
         this.movesCountPopup = document.getElementById('movesPopup');
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
+        this.timer = document.getElementById('timer');
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
 
@@ -216,8 +221,8 @@ const memoryView = {
         const match = memoryController.matchedCard();
         const mismatch = memoryController.mismatchedCard();
 
-        // Timer
-        let timer;
+        // Set the starting point for the timer
+        let startTime;
 
         for (let card of cards) {
 
@@ -250,7 +255,7 @@ const memoryView = {
 
                     if (numOfClicks === 1) {
                         // Start timer
-                        timer = setInterval(memoryController.timer, 1000);
+                        startTime = memoryController.startTime();
                     }
 
                     // Removes stars depending on the number of moves
@@ -309,7 +314,8 @@ const memoryView = {
 
                     // Game ends
                     if (memoryModel.counter === 16) {
-                        clearInterval(timer);
+                        // End timer
+                        memoryView.timer.textContent = memoryController.endTime(startTime);
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
