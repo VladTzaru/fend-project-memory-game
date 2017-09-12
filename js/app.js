@@ -168,15 +168,29 @@ const memoryController = {
     endTime(startT) {
       let endTime = new Date();
       let timeDiff = endTime - startT; //in ms
-      // strip the ms
+      // Strip the ms
       timeDiff /= 1000;
 
-      // get seconds
+      // Get seconds
       let seconds = Math.round(timeDiff % 60);
       let minutes = Math.floor(timeDiff / 60);
 
       return (`${minutes} min ${seconds} sec`);
-    }
+    },
+
+    leaderboard (moves, time) {
+      let newScore = {};
+      let leaderboard;
+      newScore.moves = moves;
+      newScore.time = time;
+
+      sessionStorage.leaderboard ? leaderboard = JSON.parse(sessionStorage.getItem('leaderboard')) : leaderboard = [];
+
+      leaderboard.push( newScore );
+      sessionStorage.setItem( 'leaderboard', JSON.stringify(leaderboard) );
+
+      sessionStorage.getItem('leaderboard');
+    },
 
 };
 
@@ -326,6 +340,9 @@ const memoryView = {
         }
     }
 };
+
+
+//---------- APP LEADERBOARD VIEW ----------//
 
 
 //---------- INVOKATIONS ----------//
