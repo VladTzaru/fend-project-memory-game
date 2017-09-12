@@ -97,6 +97,7 @@ const memoryController = {
 
     init() {
         memoryView.init();
+        memoryLeaderboardView.init();
     },
 
     getAllCards() {
@@ -330,6 +331,7 @@ const memoryView = {
                     if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
+                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime));
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
@@ -343,7 +345,30 @@ const memoryView = {
 
 
 //---------- APP LEADERBOARD VIEW ----------//
+const memoryLeaderboardView = {
+  init() {
+    // DOM pointers
+    this.leaderboard = document.getElementById('leaderboard');
 
+    this.render();
+
+  },
+
+  render() {
+    for (let i = 0; i < sessionStorage.length; i++) {
+      let obj = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+      for (let r = 0; r < obj.length; r++) {
+        let liElem1 = document.createElement('li');
+        let liElem2 = document.createElement('li');
+        liElem1.textContent = obj[r].moves;
+        liElem2.textContent = obj[r].time;
+        this.leaderboard.appendChild(liElem1);
+        this.leaderboard.appendChild(liElem2);
+      }
+    }
+
+  }
+}
 
 //---------- INVOKATIONS ----------//
 memoryController.init();
