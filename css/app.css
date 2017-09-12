@@ -58,7 +58,7 @@ ul {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 5em;
+  margin: 0 0 3em;
 }
 
 
@@ -235,15 +235,22 @@ ul {
 * Styles for the Leaderboard Panel
 */
 
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .leaderboard-container {
   min-width: 360px;
   padding: 1em;
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  position: absolute;
+  position: fixed;
   border-radius: 4px;
   box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
   top: 0;
   left: 0;
+  display: none;
+  animation: fade-in 1s;
 }
 
 .leaderboard-title {
@@ -253,6 +260,33 @@ ul {
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.48);
   padding-bottom: 1em;
+}
+
+.leaderboard-btn-close {
+  font-size: 1.4em;
+  position: absolute;
+  top: 0;
+  right: 0.4em;
+  color: rgba(255, 255, 255, 0.68);
+  transition: all .3s;
+}
+
+.leaderboard-btn-close:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.leaderboard-btn-open {
+  margin-left: 3em;
+  font-size: 18px;
+  color: #02ccba;
+  display: none;
+  cursor: pointer;
+  transition: ease-in .3s;
+  animation: fade-in 1s;
+}
+
+.leaderboard-btn-open:hover {
+  color: inherit;
 }
 
 footer {

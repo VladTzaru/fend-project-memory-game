@@ -191,9 +191,9 @@ const memoryController = {
       sessionStorage.setItem( 'leaderboard', JSON.stringify(leaderboard) );
 
       sessionStorage.getItem('leaderboard');
-    },
-
+    }
 };
+
 
 
 //---------- APP VIEW ----------//
@@ -349,24 +349,48 @@ const memoryLeaderboardView = {
   init() {
     // DOM pointers
     this.leaderboard = document.getElementById('leaderboard');
+    this.leaderboardContainer = document.getElementsByClassName('leaderboard-container')[0];
+    this.leaderboard_btnClose = document.getElementsByClassName('leaderboard-btn-close')[0];
+    this.leaderboard_btnOpen = document.getElementsByClassName('leaderboard-btn-open')[0];
+
+    // Close leaderboard
+    this.leaderboard_btnClose.addEventListener('click', function () {
+      memoryLeaderboardView.leaderboardContainer.style.display = 'none';
+    });
+
+    // Open leaderboard
+    this.leaderboard_btnOpen.addEventListener('click', function () {
+      memoryLeaderboardView.leaderboardContainer.style.display = 'block';
+    });
 
     this.render();
 
   },
 
   render() {
+    
     let games = 0;
 
+    // If sessionStorage is empty, hide the leaderboard
+    if (sessionStorage.length > 0) {
+      this.leaderboard_btnOpen.style.display = 'initial';
+      this.leaderboardContainer.style.display = 'block';
+    }
+
+    // Iterate over the sessionStorage keys and append them
     for (let i = 0; i < sessionStorage.length; i++) {
       let obj = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
 
       for (let r = 0; r < obj.length; r++) {
+
         let h4Elem = document.createElement('h4');
         let liElem1 = document.createElement('li');
         let liElem2 = document.createElement('li');
+
         h4Elem.textContent = `Game ${games += 1}`;
         liElem1.textContent = 'Moves: ' + obj[r].moves;
         liElem2.textContent = 'Time: ' + obj[r].time;
+
         this.leaderboard.appendChild(h4Elem);
         this.leaderboard.appendChild(liElem1);
         this.leaderboard.appendChild(liElem2);
