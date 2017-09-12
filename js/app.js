@@ -355,20 +355,25 @@ const memoryLeaderboardView = {
   },
 
   render() {
+    let games = 0;
+
     for (let i = 0; i < sessionStorage.length; i++) {
       let obj = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+
       for (let r = 0; r < obj.length; r++) {
+        let h4Elem = document.createElement('h4');
         let liElem1 = document.createElement('li');
         let liElem2 = document.createElement('li');
-        liElem1.textContent = obj[r].moves;
-        liElem2.textContent = obj[r].time;
+        h4Elem.textContent = `Game ${games += 1}`;
+        liElem1.textContent = 'Moves: ' + obj[r].moves;
+        liElem2.textContent = 'Time: ' + obj[r].time;
+        this.leaderboard.appendChild(h4Elem);
         this.leaderboard.appendChild(liElem1);
         this.leaderboard.appendChild(liElem2);
       }
     }
-
   }
-}
+};
 
 //---------- INVOKATIONS ----------//
 memoryController.init();

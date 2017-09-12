@@ -21,6 +21,15 @@ body {
   font-family: 'Coda', cursive;
 }
 
+h1 {
+  font: 3em Monoton, sans-serif;
+  color: rgba(46, 61, 73, 0.68);
+}
+
+ul {
+  list-style-type: none;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -33,10 +42,6 @@ body {
   align-items: center;
 }
 
-h1 {
-  font: 3em Monoton, sans-serif;
-  color: rgba(46, 61, 73, 0.68);
-}
 
 /*
 * Styles for the deck of cards
@@ -224,6 +229,30 @@ h1 {
 
 .btn-reloadGame:hover {
   background-color: rgb(152, 78, 197);
+}
+
+/*
+* Styles for the Leaderboard Panel
+*/
+
+.leaderboard-container {
+  min-width: 360px;
+  padding: 1em;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  top: 0;
+  left: 0;
+}
+
+.leaderboard-title {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.48);
+  padding-bottom: 1em;
 }
 
 footer {
