@@ -87,7 +87,8 @@ const memoryModel = {
     openCards: [],
     state: ['open', 'match', 'mismatch'],
     counter: 0,
-    moves: 0
+    moves: 0,
+    clicks: 0
 };
 
 
@@ -151,6 +152,10 @@ const memoryController = {
         return memoryModel.moves += 1;
     },
 
+    incrementClicks() {
+        return memoryModel.clicks += 1;
+    },
+
     reloadGame() {
         location.reload();
     },
@@ -211,8 +216,8 @@ const memoryView = {
         const match = memoryController.matchedCard();
         const mismatch = memoryController.mismatchedCard();
 
-        // Start timer
-        const timer = setInterval(memoryController.timer, 1000);
+        // Timer
+        let timer;
 
         for (let card of cards) {
 
@@ -234,11 +239,19 @@ const memoryView = {
                 // Get a number of moves
                 let numOfMoves = memoryController.showNumOfMoves();
 
+                // Increment clicks
+                let numOfClicks = memoryController.incrementClicks();
+
                 // Prevents multiple pushes of the same card
                 if (liElem.classList.contains(open)) {
                     return false;
 
                 } else {
+
+                    if (numOfClicks === 1) {
+                        // Start timer
+                        timer = setInterval(memoryController.timer, 1000);
+                    }
 
                     // Removes stars depending on the number of moves
                     if (numOfMoves === 13) {
@@ -248,7 +261,6 @@ const memoryView = {
                     } else if (numOfMoves === 20) {
                         memoryView.star2.className = 'hide-star';
                         memoryView.star2_copy.className = 'hide-star';
-
                     }
 
                     liElem.classList.add(open);
