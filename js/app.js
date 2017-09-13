@@ -88,7 +88,8 @@ const memoryModel = {
     state: ['open', 'match', 'mismatch'],
     counter: 0,
     moves: 0,
-    clicks: 0
+    clicks: 0,
+    music: ['audio/talia.mp3']
 };
 
 
@@ -106,6 +107,10 @@ const memoryController = {
 
     getOpenCards() {
         return memoryModel.openCards;
+    },
+
+    getMusic() {
+        return memoryModel.music;
     },
 
     showNumOfMoves() {
@@ -192,9 +197,14 @@ const memoryController = {
       sessionStorage.setItem( 'leaderboard', JSON.stringify(leaderboard) );
 
       sessionStorage.getItem('leaderboard');
+    },
+
+    audioControl(el, vol, autoplay, src) {
+      el.volume = vol;
+      el.autoplay = autoplay;
+      el.src = src;
     }
 };
-
 
 //---------- APP VIEW ----------//
 const memoryView = {
@@ -208,6 +218,7 @@ const memoryView = {
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
         this.timer = document.getElementById('timer');
+        this.musicPlayer = document.getElementById('backgroundMusic');
 
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
@@ -231,6 +242,10 @@ const memoryView = {
 
         // Shuffle cards
         memoryController.shuffle(cards);
+
+        // Start music
+        let song = memoryController.getMusic();
+        memoryController.audioControl(this.musicPlayer, 0.3, 'true', song);
 
         // Card states
         const open = memoryController.openCard();

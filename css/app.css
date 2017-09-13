@@ -24,6 +24,7 @@ body {
 h1 {
   font: 3em Monoton, sans-serif;
   color: rgba(46, 61, 73, 0.68);
+  margin-bottom: 0;
 }
 
 ul {
@@ -62,7 +63,7 @@ ul {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 3em;
+  margin: 0 0 5em;
 }
 
 
@@ -126,6 +127,11 @@ ul {
 .score-panel .stars li {
   list-style: none;
   display: inline-block;
+}
+
+#backgroundMusic {
+  margin: 0 auto;
+  display: block;
 }
 
 .score-panel .restart {
