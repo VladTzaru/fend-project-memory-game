@@ -293,11 +293,11 @@ const memoryView = {
 
                     // Removes stars depending on the number of moves
                     if (numOfMoves === 25) {
-                        memoryView.star3.className = 'hide-star';
-                        memoryView.star3_copy.className = 'hide-star';
+                        memoryView.star3.style.color = 'rgba(255, 162, 52, 0.25)';
+                        memoryView.star3_copy.style.color = 'rgba(255, 162, 52, 0.25)';
                     } else if (numOfMoves > 36) {
-                        memoryView.star2.className = 'hide-star';
-                        memoryView.star2_copy.className = 'hide-star';
+                        memoryView.star2.style.color = 'rgba(255, 162, 52, 0.25)';
+                        memoryView.star2_copy.style.color = 'rgba(255, 162, 52, 0.25)';
                     }
 
                     liElem.classList.add(open);
