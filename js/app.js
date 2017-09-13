@@ -386,6 +386,8 @@ const memoryLeaderboardView = {
         let liElem1 = document.createElement('li');
         let liElem2 = document.createElement('li');
 
+        h4Elem.className = 'upperCase';
+
         h4Elem.textContent = `Game ${games += 1}`;
         liElem1.textContent = 'Moves: ' + obj[r].moves;
         liElem2.textContent = 'Time: ' + obj[r].time;

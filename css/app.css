@@ -30,6 +30,10 @@ ul {
   list-style-type: none;
 }
 
+.upperCase {
+  text-transform: uppercase;
+}
+
 .container {
   display: flex;
   justify-content: center;
