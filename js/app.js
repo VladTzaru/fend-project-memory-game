@@ -199,10 +199,11 @@ const memoryController = {
         sessionStorage.getItem('leaderboard');
     },
 
-    audioControl(el, vol, autoplay, src) {
+    audioControl(el, vol, autoplay, src, loop) {
         el.volume = vol;
         el.autoplay = autoplay;
         el.src = src;
+        el.loop = loop;
     }
 };
 
@@ -245,7 +246,7 @@ const memoryView = {
 
         // Start music
         let song = memoryController.getMusic();
-        memoryController.audioControl(this.musicPlayer, 0.3, 'true', song);
+        memoryController.audioControl(this.musicPlayer, 0.3, 'true', song, 'true');
 
         // Card states
         const open = memoryController.openCard();
