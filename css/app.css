@@ -1,385 +1,333 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
-
 html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  color: rgba(46, 61, 73, 0.81);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: rgba(46, 61, 73, 0.81);
 }
-
 body {
-  font-family: 'Coda', cursive;
+    font-family: 'Coda', cursive;
 }
-
 h1 {
-  font: 3em Monoton, sans-serif;
-  color: rgba(46, 61, 73, 0.68);
-  margin-bottom: 0;
+    font: 3em Monoton, sans-serif;
+    color: rgba(46, 61, 73, 0.68);
+    margin-bottom: 0;
 }
-
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
-
 .upperCase {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
-
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
 .center-elements {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
-
-
 /*
 * Styles for the deck of cards
 */
 
 .deck {
-  max-width: 660px;
-  min-height: 680px;
-  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 5em;
+    max-width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 5em;
 }
-
-
 .deck .card {
-  height: 125px;
-  width: 125px;
-  background: #2e3d49;
-  font-size: 0;
-  color: #ffffff;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-  transition: all .3s;
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: all .3s;
 }
-
 .deck .card:hover {
-  background-color: rgba(46, 61, 73, 0.90);
+    background-color: rgba(46, 61, 73, 0.90);
 }
-
 .deck .card.open {
-  background: #02b3e4;
-  cursor: default;
-  font-size: 33px;
+    background: #02b3e4;
+    cursor: default;
+    font-size: 33px;
 }
-
 .deck .card.match {
-  cursor: default;
-  background: #02ccba;
-  font-size: 33px;
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
 }
-
 .deck .card.mismatch {
-  background-color: #F44336;
+    background-color: #F44336;
 }
-
 /*
 * Styles for the Score Panel
 */
 
 .score-panel {
-  width: 100%;
-  max-width: 660px;
-  padding: 1em;
+    width: 100%;
+    max-width: 660px;
+    padding: 1em;
 }
-
 .score-panel .stars {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  margin: 0 5px 0 0;
-  color: rgba(255,162,52,0.8);
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    color: rgba(255, 162, 52, 0.8);
 }
-
 .score-panel .moves {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
-
 .score-panel .stars li {
-  list-style: none;
-  display: inline-block;
+    list-style: none;
+    display: inline-block;
 }
-
 #backgroundMusic {
-  margin: 0 auto;
-  display: block;
+    margin: 0 auto;
+    display: block;
 }
-
 .score-panel .restart {
-  float: right;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: ease-in .3s;
-  color: rgb(152, 78, 197);
+    float: right;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: ease-in .3s;
+    color: rgb(152, 78, 197);
 }
-
 .score-panel .restart:hover {
-  color: inherit;
+    color: inherit;
 }
-
 .score-panel .timer {
-  text-align: center;
-  font-size: 1.2em;
-  margin-top: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 0;
 }
-
 .overlay {
-  background-color: transparent;
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  z-index: 1;
-  right: 0;
-  top: 0;
+    background-color: transparent;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    top: 0;
 }
-
 .hide-star {
-  visibility: hidden;
+    visibility: hidden;
 }
-
 /*
 * Styles for the Congratulations Popup
 */
 
 #congratulations-popup {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  display: none;
-  top: 0;
-  z-index: 1;
-  overflow-x: hidden;
-  background-color: rgb(0,0,0); /* Black fallback color */
-  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
-}
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    display: none;
+    top: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: rgb(0, 0, 0);
+    /* Black fallback color */
 
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/opacity */
+}
 .congratulations-popup-scoreBoard {
-  max-width: 400px;
-  padding: 1em;
-  margin: 4em auto;
-  background: white;
-  border-radius: 8px;
+    max-width: 400px;
+    padding: 1em;
+    margin: 4em auto;
+    background: white;
+    border-radius: 8px;
 }
-
 .congratulations-title {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 300;
-  font-size: 1.4rem;
-  margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.4rem;
+    margin-bottom: 0;
 }
-
 .congratulations-message {
-  margin-top: 0;
-  text-align: center;
+    margin-top: 0;
+    text-align: center;
 }
-
 .congratulations-stars {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: inline-block;
-  color: rgba(255,162,52,0.8);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+    color: rgba(255, 162, 52, 0.8);
 }
-
 .congratulations-stars li {
-  display: inline-block;
+    display: inline-block;
 }
-
 .congratulations-metric-title {
-  width: 64px;
-  margin: .3em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.46);
+    width: 64px;
+    margin: .3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.46);
 }
-
 .btn-reloadGame {
-  margin-top: 1em;
-  padding: .4em;
-  text-transform: uppercase;
-  width: 100%;
-  font-size: 1.4rem;
-  border-radius: 4px;
-  border: none;
-  background-color: #02ccba;
-  color: white;
-  font-weight: 600;
-  transition: all .3s;
+    margin-top: 1em;
+    padding: .4em;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #02ccba;
+    color: white;
+    font-weight: 600;
+    transition: all .3s;
 }
-
 .btn-reloadGame:hover {
-  background-color: rgb(152, 78, 197);
+    background-color: rgb(152, 78, 197);
 }
-
 /*
 * Styles for the Leaderboard Panel
 */
 
 @keyframes fade-in {
-  from {opacity: 0;}
-  to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-
 .leaderboard-container {
-  width: 100%;
-  overflow-y: scroll;
-  max-width: 360px;
-  height: 360px;
-  padding: 1em;
-  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  position: fixed;
-  border-radius: 4px;
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-  top: 0;
-  left: 0;
-  display: none;
-  animation: fade-in 1s;
+    width: 100%;
+    overflow-y: scroll;
+    max-width: 360px;
+    height: 360px;
+    padding: 1em;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    position: fixed;
+    border-radius: 4px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    top: 0;
+    left: 0;
+    display: none;
+    animation: fade-in 1s;
 }
-
 .leaderboard-container::-webkit-scrollbar {
-  width: 1em;
+    width: 1em;
 }
-
 .leaderboard-container::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.68);
-  border-radius: 0.375rem;
+    background-color: rgba(255, 255, 255, 0.68);
+    border-radius: 0.375rem;
 }
-
 .leaderboard-container::-webkit-scrollbar-thumb {
-  background-color: #2e3d49;
-  border-radius: 0.375rem;
+    background-color: #2e3d49;
+    border-radius: 0.375rem;
 }
-
 .leaderboard-title {
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 16px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.48);
-  padding-bottom: 1em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.48);
+    padding-bottom: 1em;
 }
-
 .leaderboard-btn-close {
-  font-size: 1.4em;
-  position: absolute;
-  top: 0;
-  right: 0.4em;
-  color: rgba(255, 255, 255, 0.68);
-  transition: all .3s;
+    font-size: 1.4em;
+    position: absolute;
+    top: 0;
+    right: 0.4em;
+    color: rgba(255, 255, 255, 0.68);
+    transition: all .3s;
 }
-
 .leaderboard-btn-close:hover {
-  color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
 }
-
 .leaderboard-btn-open {
-  margin-right: 1em;
-  float: right;
-  font-size: 18px;
-  color: #02ccba;
-  display: none;
-  cursor: pointer;
-  transition: ease-in .3s;
-  animation: fade-in 1s;
-  text-transform: uppercase;
+    margin-right: 1em;
+    float: right;
+    font-size: 18px;
+    color: #02ccba;
+    display: none;
+    cursor: pointer;
+    transition: ease-in .3s;
+    animation: fade-in 1s;
+    text-transform: uppercase;
 }
-
 .leaderboard-btn-open:hover {
-  color: inherit;
+    color: inherit;
 }
-
 footer {
-  width: 100%;
-  padding: 1em;
-  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    width: 100%;
+    padding: 1em;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
 }
-
 footer .copyright {
-  text-align: center;
-  color: inherit;
-  text-transform: uppercase;
-  font-size: .8em;
+    text-align: center;
+    color: inherit;
+    text-transform: uppercase;
+    font-size: .8em;
 }
-
 footer #social-media {
-  text-align: center;
+    text-align: center;
 }
-
 footer #social-media .social-media-link {
-  font-size: 2em;
-  margin-right: .3em;
-  color: inherit;
-  transition: all .3s;
+    font-size: 2em;
+    margin-right: .3em;
+    color: inherit;
+    transition: all .3s;
 }
-
 footer #social-media .social-media-link:hover {
-  color: #fff;
+    color: #fff;
 }
-
 /* Media Q's */
 
 @media only screen and (max-width: 570px) {
-
-  h1 {
-    font-size: 1.8em;
-  }
-
-  .deck {
-    justify-content: space-around;
-  }
-
-  .deck .card {
-    height: 80px;
-    width: 80px;
-    box-shadow: none;
-  }
-
-  .score-panel {
-    font-size: 14px;
-  }
-
-  .leaderboard-title {
-    letter-spacing: 10px;
-  }
-
-  .leaderboard-btn-open {
-    font-size: 14px;
-    float: right;
-  }
-
-  .leaderboard-container  {
-    max-width: 100%;
-  }
-
+    h1 {
+        font-size: 1.8em;
+    }
+    .deck {
+        justify-content: space-around;
+    }
+    .deck .card {
+        height: 80px;
+        width: 80px;
+        box-shadow: none;
+    }
+    .score-panel {
+        font-size: 14px;
+    }
+    .leaderboard-title {
+        letter-spacing: 10px;
+    }
+    .leaderboard-btn-open {
+        font-size: 14px;
+        float: right;
+    }
+    .leaderboard-container {
+        max-width: 100%;
+    }
 }

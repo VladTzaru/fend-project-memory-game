@@ -5,24 +5,20 @@
       <title>Matching Game</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="description" content="Memory game">
-
       <!-- Styles -->
       <link rel="stylesheet" href="css/app.css">
-
       <!-- Fonts -->
-      <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-      <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-      <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet prefetch">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" media="none" onload="this.media='all';">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Coda" media="none" onload="this.media='all';">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Monoton" media="none" onload="this.media='all';">
 
    </head>
    <body>
       <div id="bodyOverlay"></div>
       <div class="container">
-
          <header>
             <h1>Matching Game</h1>
          </header>
-
          <!-- Congratulations popup -->
          <section id="congratulations-popup">
             <div class="congratulations-popup-scoreBoard">
@@ -48,16 +44,11 @@
                <button class="btn-reloadGame" id="btn-reloadGame">Play again</button>
             </div>
          </section>
-
          <!-- Score panel -->
-         <section class="score-panel">
-
-           <!-- Music player -->
-           <audio id="backgroundMusic" controls>
-             <source type="audio/mpeg">
-             Your browser does not support the audio element.
-           </audio> <br>
-
+         <div class="score-panel">
+            <!-- Music player -->
+            <audio title="Two Steps From Hell - Science" id="backgroundMusic" controls></audio>
+            <br>
             <ul class="stars">
                <li><i class="fa fa-star"></i></li>
                <li id="star2"><i class="fa fa-star"></i></li>
@@ -66,31 +57,26 @@
             <span class="moves">0</span>
             <span class="moves">Move(s)</span>
             <span title="Reload game" class="restart">
-              Restart <i class="fa fa-repeat"></i>
+            Restart <i class="fa fa-repeat"></i>
             </span>
             <span title="Open leaderboard" class="leaderboard-btn-open">
-              Leaderboard <i class="fa fa-info-circle" aria-hidden="true"></i>
+            Leaderboard <i class="fa fa-info-circle" aria-hidden="true"></i>
             </span>
-         </section>
-
+         </div>
          <ul class="deck"></ul>
-
          <!-- Leaderboard panel -->
          <div class="leaderboard-container">
-           <a class="leaderboard-btn-close" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-           <h3 class="leaderboard-title">Leaderboard</h3>
-           <ul id="leaderboard"></ul>
+            <a class="leaderboard-btn-close" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <h3 class="leaderboard-title">Leaderboard</h3>
+            <ul id="leaderboard"></ul>
          </div>
-
-
          <footer>
-           <p class="copyright">Copyright &copy; 2017 Vladimir Bojovic.</p>
-           <div id="social-media">
-             <a class="social-media-link" href="https://www.facebook.com/vladimir.bojovic.3551" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-             <a class="social-media-link" href="https://github.com/VladTzaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-           </div>
+            <p class="copyright">Copyright &copy; 2017 Vladimir Bojovic.</p>
+            <div id="social-media">
+               <a class="social-media-link" href="https://www.facebook.com/vladimir.bojovic.3551" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+               <a class="social-media-link" href="https://github.com/VladTzaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+            </div>
          </footer>
-
       </div>
       <script src="js/app.js"></script>
    </body>
