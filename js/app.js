@@ -109,7 +109,9 @@ const memoryController = {
     },
 
     showNumOfMoves() {
-        return memoryModel.moves;
+      let moves = memoryModel.moves;
+      moves % 2 === 0 ? moves /= 2 : undefined;
+      return moves;
     },
 
     clearList(arr) {
@@ -194,7 +196,6 @@ const memoryController = {
 };
 
 
-
 //---------- APP VIEW ----------//
 const memoryView = {
 
@@ -210,7 +211,7 @@ const memoryView = {
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
 
-        // stars
+        // Stars
         this.star2 = document.getElementById('star2');
         this.star3 = document.getElementById('star3');
         this.star2_copy = document.getElementById('star2-copy');
@@ -266,6 +267,7 @@ const memoryView = {
                     return false;
 
                 } else {
+                    memoryController.incrementMoves();
 
                     if (numOfClicks === 1) {
                         // Start timer
@@ -273,11 +275,12 @@ const memoryView = {
                     }
 
                     // Removes stars depending on the number of moves
-                    if (numOfMoves === 13) {
+                    if (numOfMoves === 25) {
                         memoryView.star3.className = 'hide-star';
                         memoryView.star3_copy.className = 'hide-star';
+                    }
 
-                    } else if (numOfMoves === 20) {
+                    else if (numOfMoves > 35) {
                         memoryView.star2.className = 'hide-star';
                         memoryView.star2_copy.className = 'hide-star';
                     }
@@ -299,8 +302,6 @@ const memoryView = {
                             card2.classList.add(match);
                             memoryController.clearList(openCards);
 
-                            // Increment and display moves
-                            memoryController.incrementMoves();
                             memoryView.movesCount.textContent = memoryController.showNumOfMoves();
                             memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
 
@@ -310,8 +311,6 @@ const memoryView = {
                             card1.classList.add(mismatch);
                             card2.classList.add(mismatch);
 
-                            // Increment and display moves
-                            memoryController.incrementMoves();
                             memoryView.movesCount.textContent = memoryController.showNumOfMoves();
                             memoryView.movesCountPopup.textContent = memoryController.showNumOfMoves();
 
@@ -397,6 +396,7 @@ const memoryLeaderboardView = {
     }
   }
 };
+
 
 //---------- INVOKATIONS ----------//
 memoryController.init();
