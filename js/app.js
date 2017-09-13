@@ -162,7 +162,6 @@ const memoryController = {
     },
 
     startTime() {
-      console.log(new Date());
       return new Date();
     },
 
@@ -172,7 +171,7 @@ const memoryController = {
       // Strip the ms
       timeDiff /= 1000;
 
-      // Get seconds
+      // Get seconds and minutes
       let seconds = Math.round(timeDiff % 60);
       let minutes = Math.floor(timeDiff / 60);
 
@@ -368,7 +367,7 @@ const memoryLeaderboardView = {
   },
 
   render() {
-    
+
     let games = 0;
 
     // If sessionStorage is empty, hide the leaderboard
