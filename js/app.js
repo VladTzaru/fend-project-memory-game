@@ -208,6 +208,7 @@ const memoryView = {
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
         this.timer = document.getElementById('timer');
+
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
 
@@ -280,7 +281,7 @@ const memoryView = {
                         memoryView.star3_copy.className = 'hide-star';
                     }
 
-                    else if (numOfMoves > 35) {
+                    else if (numOfMoves > 36) {
                         memoryView.star2.className = 'hide-star';
                         memoryView.star2_copy.className = 'hide-star';
                     }
