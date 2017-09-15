@@ -105,7 +105,7 @@ border-radius: 8px;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-    color: rgba(255, 162, 52, 0.8);
+    color: rgb(254, 216, 130);
 }
 .score-panel .moves {
     text-transform: uppercase;
@@ -185,7 +185,7 @@ border-radius: 8px;
     padding: 0;
     list-style-type: none;
     display: inline-block;
-    color: rgba(255, 162, 52, 0.8);
+    color: rgb(254, 216, 130);
 }
 .congratulations-stars li {
     display: inline-block;
@@ -274,7 +274,7 @@ border-radius: 8px;
     margin-right: 1em;
     float: right;
     font-size: 18px;
-    color: #02ccba;
+    color: rgb(152, 78, 197);
     display: none;
     cursor: pointer;
     transition: ease-in .3s;
