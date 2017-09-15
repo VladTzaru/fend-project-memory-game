@@ -13,6 +13,8 @@ body {
     margin: 0;
     padding: 0;
     color: rgba(46, 61, 73, 0.81);
+    /* https://i.pinimg.com/originals/d8/d5/9f/d8d59f1836f374864bb58a2a68c6c304.png */
+    background: rgba(46, 61, 73, 0.81) url('../img/background.png') no-repeat;
 }
 body {
     font-family: 'Coda', cursive;
