@@ -89,7 +89,8 @@ const memoryModel = {
     counter: 0,
     moves: 0,
     clicks: 0,
-    music: ['audio/science.mp3']
+    music: ['audio/science.mp3'],
+    stars: 3
 };
 
 
@@ -111,6 +112,10 @@ const memoryController = {
 
     getMusic() {
         return memoryModel.music;
+    },
+
+    getStars() {
+        return memoryModel.stars;
     },
 
     showNumOfMoves() {
@@ -185,11 +190,12 @@ const memoryController = {
         return (`${minutes} min ${seconds} sec`);
     },
 
-    leaderboard(moves, time) {
+    leaderboard(moves, time, stars) {
         let newScore = {};
         let leaderboard;
         newScore.moves = moves;
         newScore.time = time;
+        newScore.stars = stars;
 
         sessionStorage.leaderboard ? leaderboard = JSON.parse(sessionStorage.getItem('leaderboard')) : leaderboard = [];
 
@@ -273,6 +279,9 @@ const memoryView = {
             // Sets up the event listener for a card
             liElem.addEventListener('click', function() {
 
+                // Get a number of stars
+                let stars = memoryController.getStars();
+
                 // Get a number of moves
                 let numOfMoves = memoryController.showNumOfMoves();
 
@@ -295,9 +304,12 @@ const memoryView = {
                     if (numOfMoves === 25) {
                         memoryView.star3.style.color = 'rgba(255, 162, 52, 0.25)';
                         memoryView.star3_copy.style.color = 'rgba(255, 162, 52, 0.25)';
+                        stars = 2;
+
                     } else if (numOfMoves > 36) {
                         memoryView.star2.style.color = 'rgba(255, 162, 52, 0.25)';
                         memoryView.star2_copy.style.color = 'rgba(255, 162, 52, 0.25)';
+                        stars = 1;
                     }
 
                     liElem.classList.add(open);
@@ -344,7 +356,7 @@ const memoryView = {
                     if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
-                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime));
+                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars);
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
@@ -399,16 +411,19 @@ const memoryLeaderboardView = {
                 let h4Elem = document.createElement('h4');
                 let liElem1 = document.createElement('li');
                 let liElem2 = document.createElement('li');
+                let liElem3 = document.createElement('li');
 
                 h4Elem.className = 'upperCase';
 
                 h4Elem.textContent = `Game ${games += 1}`;
                 liElem1.textContent = 'Moves: ' + obj[r].moves;
                 liElem2.textContent = 'Time: ' + obj[r].time;
+                liElem3.textContent = 'Stars: ' + obj[r].stars;
 
                 this.leaderboard.appendChild(h4Elem);
                 this.leaderboard.appendChild(liElem1);
                 this.leaderboard.appendChild(liElem2);
+                this.leaderboard.appendChild(liElem3);
             }
         }
     }
