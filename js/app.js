@@ -423,6 +423,7 @@ const memoryLeaderboardView = {
                 let liElem1 = document.createElement('li');
                 let liElem2 = document.createElement('li');
                 let liElem3 = document.createElement('li');
+                let liElem4 = document.createElement('li');
 
                 h4Elem.className = 'upperCase';
 
@@ -430,8 +431,10 @@ const memoryLeaderboardView = {
                 liElem1.textContent = 'Moves: ' + obj[r].moves;
                 liElem2.textContent = 'Time: ' + obj[r].time;
                 liElem3.textContent = 'Stars: ' + obj[r].stars;
+                liElem4.textContent = 'Player name: ' + obj[r].player;
 
                 this.leaderboard.appendChild(h4Elem);
+                this.leaderboard.appendChild(liElem4);
                 this.leaderboard.appendChild(liElem1);
                 this.leaderboard.appendChild(liElem2);
                 this.leaderboard.appendChild(liElem3);
