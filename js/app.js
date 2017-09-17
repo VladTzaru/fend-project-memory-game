@@ -90,6 +90,7 @@ const memoryModel = {
     moves: 0,
     clicks: 0,
     music: ['audio/science.mp3', 'audio/northern_pastures.mp3'],
+    soundEffects: ['audio/card_flip.mp3'],
     stars: 3,
     player: undefined
 };
@@ -114,6 +115,15 @@ const memoryController = {
 
     getMusic() {
         return memoryModel.music;
+    },
+
+    getSoundEffects() {
+        return memoryModel.soundEffects;
+    },
+
+    playSoundEffect(sound) {
+      let effect = new Audio(sound);
+      effect.play();
     },
 
     getStars() {
@@ -250,6 +260,9 @@ const memoryView = {
         // Get songs
         this.song = memoryController.getMusic();
 
+        // Get sound effects
+        this.soundEffects = memoryController.getSoundEffects();
+
         restartButton.addEventListener('click', () => memoryController.reloadGame());
         scorePanelBtnReload.addEventListener('click', () => memoryController.reloadGame());
 
@@ -308,6 +321,9 @@ const memoryView = {
                 } else {
                     memoryController.incrementMoves();
 
+                    // Play card flip sound
+                    memoryController.playSoundEffect(memoryView.soundEffects[0]);
+
                     if (numOfClicks === 1) {
                         // Start timer
                         startTime = memoryController.startTime();
@@ -361,7 +377,7 @@ const memoryView = {
                                 card2.classList.remove(open, mismatch);
                                 memoryController.clearList(openCards);
                                 memoryView.overlay.classList.remove('overlay');
-                            }, 800);
+                            }, 900);
                         }
                     }
 
