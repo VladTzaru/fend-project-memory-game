@@ -347,6 +347,13 @@ audio {
   border: 1px solid #aa7ecd;
 }
 
+.player-screen-img {
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #d2f1ff;
 }
@@ -494,5 +501,8 @@ footer #social-media .social-media-link:hover {
   .player-screen-btn-cancel, .player-screen-btn-play {
     padding: 1em;
     font-size: 2em;
+  }
+  .player-screen-img {
+    width: 100px;
   }
 }
