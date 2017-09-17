@@ -90,7 +90,7 @@ const memoryModel = {
     moves: 0,
     clicks: 0,
     music: ['audio/science.mp3', 'audio/northern_pastures.mp3'],
-    soundEffects: ['audio/card_flip.mp3'],
+    soundEffects: ['audio/card_flip.mp3', 'audio/match.mp3'],
     stars: 3,
     player: undefined
 };
@@ -353,6 +353,9 @@ const memoryView = {
                         let card2 = openCards[1];
 
                         if (card1.classList.contains(card.name) && card2.classList.contains(card.name)) {
+                            // Play the match sound effect
+                            memoryController.playSoundEffect(memoryView.soundEffects[1]);
+
                             memoryController.incrementCount();
                             card1.classList.add(match);
                             card2.classList.add(match);
@@ -385,10 +388,10 @@ const memoryView = {
                     if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
-                        // Victory music
-                        memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
                         setTimeout(function() {
+                            // Victory music
+                            memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
                         }, 600);
