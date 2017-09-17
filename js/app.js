@@ -314,7 +314,7 @@ const memoryView = {
                     }
 
                     // Removes stars depending on the number of moves
-                    if (numOfMoves > 24 && numOfMoves < 35) {
+                    if (numOfMoves > 24 && numOfMoves < 36) {
                         memoryView.star3.style.color = 'rgba(255, 255, 255, 0.24)';
                         memoryView.star3_copy.style.color = 'rgba(255, 255, 255, 0.24)';
                         stars = 2;
