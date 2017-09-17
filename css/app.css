@@ -487,6 +487,9 @@ footer #social-media .social-media-link:hover {
   .player-screen-title {
     font-size: 2em;
   }
+  .player-screen-text {
+    width: 100%;
+  }
   .player-screen-btn-cancel, .player-screen-btn-play {
     padding: 1em;
     font-size: 2em;
