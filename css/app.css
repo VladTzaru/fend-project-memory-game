@@ -124,6 +124,7 @@ audio {
   text-transform: uppercase;
   transition: ease-in .3s;
   color: rgb(152, 78, 197);
+  font-size: 18px;
 }
 .player-name {
   text-transform: uppercase;
@@ -131,6 +132,7 @@ audio {
   cursor: pointer;
   transition: ease-in .3s;
   margin-left: .3em;
+  font-size: 18px;
 }
 .player-name::after {
   content: '\f007';
@@ -381,7 +383,7 @@ audio {
 .player-screen-action {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .player-screen-btn-play {
   display: block;
@@ -464,7 +466,29 @@ footer #social-media .social-media-link:hover {
     font-size: 14px;
     float: right;
   }
+  .player-name {
+    font-size: 14px;
+  }
+  .score-panel .restart {
+    font-size: 14px;
+  }
   .leaderboard-container {
     max-width: 100%;
+  }
+  .player-screen-text-switchPlayer  {
+    width: 100%;
+    font-size: 1.2em;
+  }
+  #playerName {
+    width: 100%;
+    margin: 0;
+    font-size: 1.2em;
+  }
+  .player-screen-title {
+    font-size: 2em;
+  }
+  .player-screen-btn-cancel, .player-screen-btn-play {
+    padding: 1em;
+    font-size: 2em;
   }
 }
