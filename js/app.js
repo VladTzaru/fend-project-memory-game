@@ -391,7 +391,7 @@ const memoryView = {
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
-                        }, 200);
+                        }, 600);
                     }
                 }
             });
