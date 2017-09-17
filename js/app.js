@@ -89,7 +89,7 @@ const memoryModel = {
     counter: 0,
     moves: 0,
     clicks: 0,
-    music: ['audio/science.mp3', 'audio/dragon_rider.mp3', 'audio/adventures_of_gillock.mp3'],
+    music: ['audio/science.mp3', 'audio/northern_pastures.mp3'],
     stars: 3,
     player: undefined
 };
@@ -265,7 +265,7 @@ const memoryView = {
         memoryController.shuffle(cards);
 
         // Start music
-        memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[2], true);
+        memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[0], true);
 
         // Card states
         const open = memoryController.openCard();
@@ -311,8 +311,6 @@ const memoryView = {
                     if (numOfClicks === 1) {
                         // Start timer
                         startTime = memoryController.startTime();
-                        // Start music
-                        memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[0], true);
                     }
 
                     // Removes stars depending on the number of moves
@@ -371,7 +369,8 @@ const memoryView = {
                     if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
-                        memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], true);
+                        // Victory music
+                        memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
