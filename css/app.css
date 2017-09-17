@@ -481,7 +481,7 @@ footer #social-media .social-media-link:hover {
   }
   #playerName {
     width: 100%;
-    margin: 0;
+    margin: 2em 0 0;
     font-size: 1.2em;
   }
   .player-screen-title {
@@ -489,6 +489,8 @@ footer #social-media .social-media-link:hover {
   }
   .player-screen-text {
     width: 100%;
+    text-align: center;
+    font-size: 1em;
   }
   .player-screen-btn-cancel, .player-screen-btn-play {
     padding: 1em;
