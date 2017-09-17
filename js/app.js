@@ -433,6 +433,8 @@ const memoryLeaderboardView = {
                 liElem3.textContent = 'Stars: ' + obj[r].stars;
                 liElem4.textContent = 'Player name: ' + obj[r].player;
 
+                memoryController.setPlayer(obj[r].player);
+
                 this.leaderboard.appendChild(h4Elem);
                 this.leaderboard.appendChild(liElem4);
                 this.leaderboard.appendChild(liElem1);
@@ -449,6 +451,7 @@ const memoryPlayerscreenView = {
     init() {
       // DOM pointers
       this.formElem = document.getElementById('playerScreen');
+      this.playerName = document.getElementsByClassName('player-name')[0];
 
       // Set the player's name
       const createPlayer = (name) => name;
@@ -458,16 +461,14 @@ const memoryPlayerscreenView = {
         let playerName = document.getElementById('playerName').value;
         playerName = createPlayer(playerName);
         memoryController.setPlayer(playerName);
-        console.log(memoryModel.player);
+        memoryPlayerscreenView.render();
       });
-
-
 
       this.render();
     },
 
     render() {
-
+      this.playerName.textContent = memoryController.getPlayer();
     }
 };
 
