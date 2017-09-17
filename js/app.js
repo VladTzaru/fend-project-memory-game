@@ -124,6 +124,10 @@ const memoryController = {
         return memoryModel.player;
     },
 
+    setPlayer(name) {
+      return memoryModel.player = name;
+    },
+
     showNumOfMoves() {
         let moves = memoryModel.moves;
         moves % 2 === 0 ? moves /= 2 : undefined;
@@ -196,12 +200,13 @@ const memoryController = {
         return (`${minutes} min ${seconds} sec`);
     },
 
-    leaderboard(moves, time, stars) {
+    leaderboard(moves, time, stars, player) {
         let newScore = {};
         let leaderboard;
         newScore.moves = moves;
         newScore.time = time;
         newScore.stars = stars;
+        newScore.player = player;
 
         sessionStorage.leaderboard ? leaderboard = JSON.parse(sessionStorage.getItem('leaderboard')) : leaderboard = [];
 
@@ -258,7 +263,7 @@ const memoryView = {
 
         // Start music
         let song = memoryController.getMusic();
-        memoryController.audioControl(this.musicPlayer, 0.3, true, song, true);
+        memoryController.audioControl(this.musicPlayer, 0.3, false, song, true);
 
         // Card states
         const open = memoryController.openCard();
@@ -362,7 +367,7 @@ const memoryView = {
                     if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
-                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars);
+                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
@@ -441,13 +446,25 @@ const memoryPlayerscreenView = {
     init() {
       // DOM pointers
       this.formElem = document.getElementById('playerScreen');
-      this.playerName = document.getElementById('playerName').value;
+
+      // Set the player's name
+      const createPlayer = (name) => name;
+
+      this.formElem.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let playerName = document.getElementById('playerName').value;
+        playerName = createPlayer(playerName);
+        memoryController.setPlayer(playerName);
+        console.log(memoryModel.player);
+      });
+
+
 
       this.render();
     },
 
     render() {
-      console.log('hi');
+
     }
 };
 
