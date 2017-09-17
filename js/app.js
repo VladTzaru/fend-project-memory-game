@@ -90,7 +90,8 @@ const memoryModel = {
     moves: 0,
     clicks: 0,
     music: ['audio/science.mp3'],
-    stars: 3
+    stars: 3,
+    player: undefined
 };
 
 
@@ -100,6 +101,7 @@ const memoryController = {
     init() {
         memoryView.init();
         memoryLeaderboardView.init();
+        memoryPlayerscreenView.init();
     },
 
     getAllCards() {
@@ -116,6 +118,10 @@ const memoryController = {
 
     getStars() {
         return memoryModel.stars;
+    },
+
+    getPlayer() {
+        return memoryModel.player;
     },
 
     showNumOfMoves() {
@@ -252,7 +258,7 @@ const memoryView = {
 
         // Start music
         let song = memoryController.getMusic();
-        memoryController.audioControl(this.musicPlayer, 0.3, 'true', song, 'true');
+        memoryController.audioControl(this.musicPlayer, 0.3, true, song, true);
 
         // Card states
         const open = memoryController.openCard();
@@ -426,6 +432,22 @@ const memoryLeaderboardView = {
                 this.leaderboard.appendChild(liElem3);
             }
         }
+    }
+};
+
+
+//---------- APP PLAYER SCREEN VIEW ----------//
+const memoryPlayerscreenView = {
+    init() {
+      // DOM pointers
+      this.formElem = document.getElementById('playerScreen');
+      this.playerName = document.getElementById('playerName').value;
+
+      this.render();
+    },
+
+    render() {
+      console.log('hi');
     }
 };
 
