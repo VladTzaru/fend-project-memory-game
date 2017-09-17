@@ -317,6 +317,7 @@ audio {
   z-index: 1;
   padding: 1em;
   opacity: .97;
+  overflow-y: scroll;
 }
 
 .player-screen-title {
