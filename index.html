@@ -22,8 +22,12 @@
         <p class="player-screen-text">The game board consists of sixteen cards arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down.
           The gameplay rules are very simple: <br><br><span class="player-screen-text-important">flip over two hidden cards at a time to locate the ones that match!</span>
         </p>
+        <p class="player-screen-text-switchPlayer">Want to switch a player? It's easy, just type the player's name and click play.</p>
         <input required id="playerName" maxlength="16" type="text" placeholder="Enter your name"> <br>
-        <button class="player-screen-btn-play" type="submit">Play</button>
+        <div class="player-screen-action">
+          <button class="player-screen-btn-play" type="submit">Play</button>
+          <button type="button" class="player-screen-btn-cancel">Cancel</button>
+        </div>
       </form>
       <div class="container">
          <header>
@@ -66,7 +70,7 @@
             </ul>
             <span class="moves">0</span>
             <span class="moves">Move(s)</span>
-            <span class="player-name">Player</span>
+            <span title="Change player" class="player-name">Player</span>
             <span title="Reload game" class="restart">
             Restart <i class="fa fa-repeat"></i>
             </span>

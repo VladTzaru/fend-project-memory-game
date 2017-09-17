@@ -452,15 +452,27 @@ const memoryPlayerscreenView = {
       // DOM pointers
       this.formElem = document.getElementById('playerScreen');
       this.playerName = document.getElementsByClassName('player-name')[0];
+      this.btnCancel = document.getElementsByClassName('player-screen-btn-cancel')[0];
+      this.subTitle = document.getElementsByClassName('player-screen-subTitle')[0];
+      this.welcomeText = document.getElementsByClassName('player-screen-text')[0];
+      this.switchPlayerText = document.getElementsByClassName('player-screen-text-switchPlayer')[0];
 
       // Set the player's name
       const createPlayer = (name) => name;
+
+      // Open player screen
+      this.playerName.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'block');
+
+      // Close player screen
+      this.btnCancel.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'none');
+
 
       this.formElem.addEventListener('submit', (e) => {
         e.preventDefault();
         let playerName = document.getElementById('playerName').value;
         playerName = createPlayer(playerName);
         memoryController.setPlayer(playerName);
+        this.formElem.style.display = 'none';
         memoryPlayerscreenView.render();
       });
 
@@ -469,6 +481,15 @@ const memoryPlayerscreenView = {
 
     render() {
       this.playerName.textContent = memoryController.getPlayer();
+
+      if (sessionStorage.length > 0) {
+          this.formElem.style.display = 'none';
+          this.subTitle.style.display = 'none';
+          this.welcomeText.style.display = 'none';
+      } else {
+          this.btnCancel.style.display = 'none';
+          this.switchPlayerText.style.display = 'none';
+      }
     }
 };
 

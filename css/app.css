@@ -136,7 +136,12 @@ audio {
   content: '\f007';
   font-family: FontAwesome;
   color: rgb(152, 78, 197);
+  transition: ease-in .3s;
   margin-left: .3em;
+}
+
+.player-name:hover, .player-name:hover::after {
+  color: inherit;
 }
 
 .score-panel .restart:hover {
@@ -325,15 +330,16 @@ audio {
 }
 
 #playerName {
-  margin: 4em auto 0 auto;
+  margin: 2em auto 0 auto;
   display: block;
-  padding: 1em;
+  padding: .4em;
   border: 1px solid #d2f1ff;
   border-radius: 4px;
   background-color: transparent;
   outline: none;
   transition: ease-in .3s;
   color: #d2f1ff;
+  font-size: 2em;
 }
 #playerName:focus, #playerName:hover {
   background-color: #aa7ecd;
@@ -356,6 +362,14 @@ audio {
 .player-screen-text {
   width: 50%;
   margin: 1em auto;
+  font-size: 1.2em;
+}
+
+.player-screen-text-switchPlayer {
+  text-align: center;
+  font-size: 2em;
+  width: 50%;
+  margin: 1em auto;
 }
 
 .player-screen-text-important {
@@ -364,8 +378,12 @@ audio {
   font-weight: 600;
 }
 
+.player-screen-action {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
 .player-screen-btn-play {
-  margin: 0 auto;
   display: block;
   padding: 1em;
   background-color: transparent;
@@ -379,6 +397,23 @@ audio {
 }
 
 .player-screen-btn-play:hover {
+  color: rgb(254, 216, 130);
+}
+
+.player-screen-btn-cancel {
+  display: block;
+  padding: 1em;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 3.4em;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: ease-in .3s;
+}
+
+.player-screen-btn-cancel:hover {
   color: rgb(254, 216, 130);
 }
 
