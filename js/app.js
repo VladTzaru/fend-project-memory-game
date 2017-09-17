@@ -263,7 +263,7 @@ const memoryView = {
 
         // Start music
         let song = memoryController.getMusic();
-        memoryController.audioControl(this.musicPlayer, 0.3, false, song, true);
+        memoryController.audioControl(this.musicPlayer, 0.3, true, song, true);
 
         // Card states
         const open = memoryController.openCard();
