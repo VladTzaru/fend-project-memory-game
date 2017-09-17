@@ -362,7 +362,7 @@ audio {
 }
 
 .player-screen-text {
-  width: 50%;
+  width: 70%;
   margin: 1em auto;
   font-size: 1.2em;
 }
@@ -370,7 +370,7 @@ audio {
 .player-screen-text-switchPlayer {
   text-align: center;
   font-size: 2em;
-  width: 50%;
+  width: 70%;
   margin: 1em auto;
 }
 
