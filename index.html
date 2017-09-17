@@ -17,9 +17,13 @@
       <div id="bodyOverlay"></div>
       <!-- Player screen -->
       <form id="playerScreen" action="player-screen">
-        <h4>Welcome!</h4>
-        <input id="playerName" maxlength="16" type="text" placeholder="Enter your name">
-        <button type="submit">Play</button>
+        <h4 class="player-screen-title">Matching game</h4>
+        <h6 class="player-screen-subTitle">Welcome!</h6>
+        <p class="player-screen-text">The game board consists of sixteen cards arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down.
+          The gameplay rules are very simple: <br><br><span class="player-screen-text-important">flip over two hidden cards at a time to locate the ones that match!</span>
+        </p>
+        <input required id="playerName" maxlength="16" type="text" placeholder="Enter your name"> <br>
+        <button class="player-screen-btn-play" type="submit">Play</button>
       </form>
       <div class="container">
          <header>

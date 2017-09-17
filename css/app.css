@@ -298,6 +298,90 @@ audio {
 .leaderboard-btn-open:hover {
   color: inherit;
 }
+
+/*
+* Styles for the Player Screen
+*/
+#playerScreen {
+  position: fixed;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding: 1em;
+  opacity: .97;
+}
+
+.player-screen-title {
+  font: 4em Monoton, sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+.player-screen-subTitle {
+  text-align: center;
+  font-size: 2em;
+  margin: 0 0 1em 0;
+}
+
+#playerName {
+  margin: 4em auto 0 auto;
+  display: block;
+  padding: 1em;
+  border: 1px solid #d2f1ff;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+  transition: ease-in .3s;
+  color: #d2f1ff;
+}
+#playerName:focus, #playerName:hover {
+  background-color: #aa7ecd;
+  border: 1px solid #aa7ecd;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #d2f1ff;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #d2f1ff;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #d2f1ff;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #d2f1ff;
+}
+
+.player-screen-text {
+  width: 50%;
+  margin: 1em auto;
+}
+
+.player-screen-text-important {
+  text-transform: uppercase;
+  color: rgb(254, 216, 130);
+  font-weight: 600;
+}
+
+.player-screen-btn-play {
+  margin: 0 auto;
+  display: block;
+  padding: 1em;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 3.4em;
+  color: #d2f1ff;
+  cursor: pointer;
+  outline: none;
+  transition: ease-in .3s;
+}
+
+.player-screen-btn-play:hover {
+  color: rgb(254, 216, 130);
+}
+
 footer {
   width: 100%;
   padding: 1em;
