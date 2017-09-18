@@ -374,7 +374,7 @@ const memoryView = {
                     }
 
                     // Game ends
-                    if (memoryModel.counter === 2) {
+                    if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.watch.stop();
 

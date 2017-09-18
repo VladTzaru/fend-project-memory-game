@@ -99,7 +99,7 @@ audio {
   padding: 1em;
 }
 #gameboardCounter {
-  text-align: center;
+  padding: 0 calc(50% - 50px);
   font-size: 2em;
   margin-top: 0;
   color: #d7f3ff;
@@ -466,6 +466,9 @@ footer #social-media .social-media-link:hover {
     height: 80px;
     width: 80px;
     box-shadow: none;
+  }
+  #gameboardCounter {
+    padding: 0 calc(50% - 44px);
   }
   .score-panel {
     font-size: 14px;
