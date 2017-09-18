@@ -326,8 +326,8 @@ audio {
 
 .player-screen-subTitle {
   text-align: center;
-  font-size: 2em;
   margin: 0 0 1em 0;
+  font: 2.4em Cursive, sans-serif;
 }
 
 #playerName {
@@ -370,7 +370,7 @@ audio {
 .player-screen-text {
   width: 70%;
   margin: 1em auto;
-  font-size: 1.2em;
+  font: 1.4em Cursive, sans-serif;
 }
 
 .player-screen-text-switchPlayer {
@@ -490,8 +490,8 @@ footer #social-media .social-media-link:hover {
     margin: 2em 0 0;
     font-size: 1.2em;
   }
-  .player-screen-title {
-    font-size: 2em;
+  .player-screen-title, .player-screen-subTitle {
+    font-size: 1.8em;
   }
   .player-screen-text {
     width: 100%;
