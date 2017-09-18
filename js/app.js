@@ -121,8 +121,9 @@ const memoryController = {
         return memoryModel.soundEffects;
     },
 
-    playSoundEffect(sound) {
+    playSoundEffect(sound, p) {
       let effect = new Audio(sound);
+      effect.preload = p;
       effect.play();
     },
 
@@ -278,7 +279,7 @@ const memoryView = {
         memoryController.shuffle(cards);
 
         // Start music
-        memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[0], true);
+        this.musicPlayer.oncanplaythrough = memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[0], true);
 
         // Card states
         const open = memoryController.openCard();
@@ -322,7 +323,7 @@ const memoryView = {
                     memoryController.incrementMoves();
 
                     // Play card flip sound
-                    memoryController.playSoundEffect(memoryView.soundEffects[0]);
+                    memoryController.playSoundEffect(memoryView.soundEffects[0], 'auto');
 
                     if (numOfClicks === 1) {
                         // Start timer
@@ -354,7 +355,7 @@ const memoryView = {
 
                         if (card1.classList.contains(card.name) && card2.classList.contains(card.name)) {
                             // Play the match sound effect
-                            memoryController.playSoundEffect(memoryView.soundEffects[1]);
+                            memoryController.playSoundEffect(memoryView.soundEffects[1], 'auto');
 
                             memoryController.incrementCount();
                             card1.classList.add(match);
@@ -391,7 +392,7 @@ const memoryView = {
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // Victory music
-                            memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
+                            memoryView.musicPlayer.oncanplaythrough = memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
                         }, 600);
