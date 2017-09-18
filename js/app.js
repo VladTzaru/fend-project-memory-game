@@ -162,6 +162,10 @@ const memoryController = {
         return memoryModel.state[2];
     },
 
+    hideBodyOverflow() {
+        document.body.style.overflow = 'hidden';
+    },
+
     // Shuffle function from http://stackoverflow.com/a/2450976
     shuffle(array) {
         let currentIndex = array.length,
@@ -386,7 +390,7 @@ const memoryView = {
                     }
 
                     // Game ends
-                    if (memoryModel.counter === 16) {
+                    if (memoryModel.counter === 2) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
@@ -395,6 +399,7 @@ const memoryView = {
                             memoryView.musicPlayer.oncanplaythrough = memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
+                            memoryController.hideBodyOverflow();
                         }, 600);
                     }
                 }
