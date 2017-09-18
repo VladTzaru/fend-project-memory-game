@@ -198,23 +198,6 @@ const memoryController = {
         location.reload();
     },
 
-    startTime() {
-        return new Date();
-    },
-
-    endTime(startT) {
-        let endTime = new Date();
-        let timeDiff = endTime - startT; //in ms
-        // Strip the ms
-        timeDiff /= 1000;
-
-        // Get seconds and minutes
-        let seconds = Math.round(timeDiff % 60);
-        let minutes = Math.floor(timeDiff / 60);
-
-        return (`${minutes} min ${seconds} sec`);
-    },
-
     leaderboard(moves, time, stars, player) {
         let newScore = {};
         let leaderboard;
@@ -251,6 +234,7 @@ const memoryView = {
         this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
         this.timer = document.getElementById('timer');
+        this.counter = document.getElementById('counter');
         this.musicPlayer = document.getElementById('backgroundMusic');
 
         const restartButton = document.getElementsByClassName('restart')[0];
@@ -264,6 +248,9 @@ const memoryView = {
 
         // Get songs
         this.song = memoryController.getMusic();
+
+        // Instantiate stopwatch object
+        this.watch = new Stopwatch(this.counter, this.timer);
 
         // Get sound effects
         this.soundEffects = memoryController.getSoundEffects();
@@ -289,9 +276,6 @@ const memoryView = {
         const open = memoryController.openCard();
         const match = memoryController.matchedCard();
         const mismatch = memoryController.mismatchedCard();
-
-        // Set the starting point for the timer
-        let startTime;
 
         for (let card of cards) {
 
@@ -331,7 +315,7 @@ const memoryView = {
 
                     if (numOfClicks === 1) {
                         // Start timer
-                        startTime = memoryController.startTime();
+                        memoryView.watch.start();
                     }
 
                     // Removes stars depending on the number of moves
@@ -390,10 +374,11 @@ const memoryView = {
                     }
 
                     // Game ends
-                    if (memoryModel.counter === 16) {
+                    if (memoryModel.counter === 2) {
                         // End timer
-                        memoryView.timer.textContent = memoryController.endTime(startTime);
-                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
+                        memoryView.watch.stop();
+
+                        memoryController.leaderboard(memoryController.showNumOfMoves(), null, stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // Victory music
                             memoryView.musicPlayer.oncanplaythrough = memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);

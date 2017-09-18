@@ -93,11 +93,16 @@ audio {
 /*
 * Styles for the Score Panel
 */
-
 .score-panel {
   width: 100%;
   max-width: 660px;
   padding: 1em;
+}
+#counter {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 0;
+  color: #d7f3ff;
 }
 .score-panel .stars {
   margin: 0;
