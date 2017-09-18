@@ -449,13 +449,13 @@ const memoryLeaderboardView = {
                 let liElem3 = document.createElement('li');
                 let liElem4 = document.createElement('li');
 
-                h4Elem.className = 'upperCase';
+                h4Elem.className  = 'upperCase';
 
-                h4Elem.textContent = `Game ${games += 1}`;
-                liElem1.textContent = 'Moves: ' + obj[r].moves;
-                liElem2.textContent = 'Time: ' + obj[r].time;
-                liElem3.textContent = 'Stars: ' + obj[r].stars;
-                liElem4.textContent = 'Player name: ' + obj[r].player;
+                h4Elem.textContent  = `Game ${games += 1}`;
+                liElem1.textContent = `Moves: ${obj[r].moves}`;
+                liElem2.textContent = `Time: ${obj[r].time}`;
+                liElem3.textContent = `Stars: ${obj[r].stars}`;
+                liElem4.textContent = `Player name: ${obj[r].player}`;
 
                 memoryController.setPlayer(obj[r].player);
 
