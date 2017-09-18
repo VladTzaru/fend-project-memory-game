@@ -227,15 +227,15 @@ const memoryView = {
 
     init() {
         // DOM pointers
-        this.deck = document.getElementsByClassName('deck')[0];
-        this.overlay = document.getElementById('bodyOverlay');
-        this.movesCount = document.getElementsByClassName('moves')[0];
-        this.movesCountPopup = document.getElementById('movesPopup');
-        this.scorePanel = document.getElementsByClassName('score-panel')[0];
+        this.deck                 = document.getElementsByClassName('deck')[0];
+        this.overlay              = document.getElementById('bodyOverlay');
+        this.movesCount           = document.getElementsByClassName('moves')[0];
+        this.movesCountPopup      = document.getElementById('movesPopup');
+        this.scorePanel           = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
-        this.timer = document.getElementById('timer');
-        this.counter = document.getElementById('counter');
-        this.musicPlayer = document.getElementById('backgroundMusic');
+        this.leaderboardCounter   = document.getElementById('leaderboardCounter');
+        this.gameboardCounter     = document.getElementById('gameboardCounter');
+        this.musicPlayer          = document.getElementById('backgroundMusic');
 
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
@@ -250,7 +250,7 @@ const memoryView = {
         this.song = memoryController.getMusic();
 
         // Instantiate stopwatch object
-        this.watch = new Stopwatch(this.counter, this.timer);
+        this.watch = new Stopwatch(this.leaderboardCounter, this.gameboardCounter);
 
         // Get sound effects
         this.soundEffects = memoryController.getSoundEffects();
@@ -378,7 +378,7 @@ const memoryView = {
                         // End timer
                         memoryView.watch.stop();
 
-                        memoryController.leaderboard(memoryController.showNumOfMoves(), null, stars, memoryController.getPlayer());
+                        memoryController.leaderboard(memoryController.showNumOfMoves(), memoryView.leaderboardCounter.innerHTML, stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // Victory music
                             memoryView.musicPlayer.oncanplaythrough = memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
