@@ -3,7 +3,8 @@
 //---------- APP MODEL ----------//
 const memoryModel = {
     //  A list that holds all cards
-    cards: [{
+    cards: [
+        {
             name: 'diamond',
             icon: 'fa fa-diamond',
             class: 'card'
@@ -122,9 +123,9 @@ const memoryController = {
     },
 
     playSoundEffect(sound, p) {
-      let effect = new Audio(sound);
-      effect.preload = p;
-      effect.play();
+        let effect = new Audio(sound);
+        effect.preload = p;
+        effect.play();
     },
 
     getStars() {
@@ -136,12 +137,12 @@ const memoryController = {
     },
 
     setPlayer(name) {
-      return memoryModel.player = name;
+        return memoryModel.player = name;
     },
 
     showNumOfMoves() {
         let moves = memoryModel.moves;
-        moves % 2 === 0 ? moves /= 2 : undefined;
+        moves % 2 === 0 ? moves /= 2 : null;
         return moves;
     },
 
@@ -227,15 +228,15 @@ const memoryView = {
 
     init() {
         // DOM pointers
-        this.deck                 = document.getElementsByClassName('deck')[0];
-        this.overlay              = document.getElementById('bodyOverlay');
-        this.movesCount           = document.getElementsByClassName('moves')[0];
-        this.movesCountPopup      = document.getElementById('movesPopup');
-        this.scorePanel           = document.getElementsByClassName('score-panel')[0];
+        this.deck = document.getElementsByClassName('deck')[0];
+        this.overlay = document.getElementById('bodyOverlay');
+        this.movesCount = document.getElementsByClassName('moves')[0];
+        this.movesCountPopup = document.getElementById('movesPopup');
+        this.scorePanel = document.getElementsByClassName('score-panel')[0];
         this.congratulationsPopup = document.getElementById('congratulations-popup');
-        this.leaderboardCounter   = document.getElementById('leaderboardCounter');
-        this.gameboardCounter     = document.getElementById('gameboardCounter');
-        this.musicPlayer          = document.getElementById('backgroundMusic');
+        this.leaderboardCounter = document.getElementById('leaderboardCounter');
+        this.gameboardCounter = document.getElementById('gameboardCounter');
+        this.musicPlayer = document.getElementById('backgroundMusic');
 
         const restartButton = document.getElementsByClassName('restart')[0];
         const scorePanelBtnReload = document.getElementById('btn-reloadGame');
@@ -439,9 +440,9 @@ const memoryLeaderboardView = {
                 let liElem3 = document.createElement('li');
                 let liElem4 = document.createElement('li');
 
-                h4Elem.className  = 'upperCase';
+                h4Elem.className = 'upperCase';
 
-                h4Elem.textContent  = `Game ${games += 1}`;
+                h4Elem.textContent = `Game ${games += 1}`;
                 liElem1.textContent = `Moves: ${obj[r].moves}`;
                 liElem2.textContent = `Time: ${obj[r].time}`;
                 liElem3.textContent = `Stars: ${obj[r].stars}`;
@@ -463,47 +464,47 @@ const memoryLeaderboardView = {
 //---------- APP PLAYER SCREEN VIEW ----------//
 const memoryPlayerscreenView = {
     init() {
-      // DOM pointers
-      this.formElem = document.getElementById('playerScreen');
-      this.playerName = document.getElementsByClassName('player-name')[0];
-      this.btnCancel = document.getElementsByClassName('player-screen-btn-cancel')[0];
-      this.subTitle = document.getElementsByClassName('player-screen-subTitle')[0];
-      this.welcomeText = document.getElementsByClassName('player-screen-text')[0];
-      this.switchPlayerText = document.getElementsByClassName('player-screen-text-switchPlayer')[0];
+        // DOM pointers
+        this.formElem = document.getElementById('playerScreen');
+        this.playerName = document.getElementsByClassName('player-name')[0];
+        this.btnCancel = document.getElementsByClassName('player-screen-btn-cancel')[0];
+        this.subTitle = document.getElementsByClassName('player-screen-subTitle')[0];
+        this.welcomeText = document.getElementsByClassName('player-screen-text')[0];
+        this.switchPlayerText = document.getElementsByClassName('player-screen-text-switchPlayer')[0];
 
-      // Set the player's name
-      const createPlayer = (name) => name;
+        // Set the player's name
+        const createPlayer = (name) => name;
 
-      // Open player screen
-      this.playerName.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'block');
+        // Open player screen
+        this.playerName.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'block');
 
-      // Close player screen
-      this.btnCancel.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'none');
+        // Close player screen
+        this.btnCancel.addEventListener('click', () => memoryPlayerscreenView.formElem.style.display = 'none');
 
 
-      this.formElem.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let playerName = document.getElementById('playerName').value;
-        playerName = createPlayer(playerName);
-        memoryController.setPlayer(playerName);
-        this.formElem.style.display = 'none';
-        memoryPlayerscreenView.render();
-      });
+        this.formElem.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let playerName = document.getElementById('playerName').value;
+            playerName = createPlayer(playerName);
+            memoryController.setPlayer(playerName);
+            this.formElem.style.display = 'none';
+            memoryPlayerscreenView.render();
+        });
 
-      this.render();
+        this.render();
     },
 
     render() {
-      this.playerName.textContent = memoryController.getPlayer();
+        this.playerName.textContent = memoryController.getPlayer();
 
-      if (sessionStorage.length > 0) {
-          this.formElem.style.display = 'none';
-          this.subTitle.style.display = 'none';
-          this.welcomeText.style.display = 'none';
-      } else {
-          this.btnCancel.style.display = 'none';
-          this.switchPlayerText.style.display = 'none';
-      }
+        if (sessionStorage.length > 0) {
+            this.formElem.style.display = 'none';
+            this.subTitle.style.display = 'none';
+            this.welcomeText.style.display = 'none';
+        } else {
+            this.btnCancel.style.display = 'none';
+            this.switchPlayerText.style.display = 'none';
+        }
     }
 };
 

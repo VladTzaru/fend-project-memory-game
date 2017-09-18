@@ -11,27 +11,28 @@
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" media="none" onload="this.media='all';">
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Coda" media="none" onload="this.media='all';">
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Monoton" media="none" onload="this.media='all';">
-
    </head>
    <body>
       <div id="bodyOverlay"></div>
       <!-- Player screen -->
       <form id="playerScreen" action="player-screen">
-        <h4 class="player-screen-title">Matching game</h4>
-        <h6 class="player-screen-subTitle">Welcome!</h6>
-        <p class="player-screen-text">The game board consists of sixteen cards arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down.
-          The gameplay rules are very simple: <br><br><span class="player-screen-text-important">flip over two hidden cards at a time to locate the ones that match!</span>
-        </p>
-        <p class="player-screen-text-switchPlayer">Want to switch a player? It's easy, just type the player's name and click play.</p>
-        <input required id="playerName" maxlength="16" type="text" placeholder="Enter your name"> <br>
-        <div class="player-screen-action">
-          <button class="player-screen-btn-play" type="submit">Play</button>
-          <button type="button" class="player-screen-btn-cancel">Cancel</button>
-        </div>
-        <!-- https://publicdomainvectors.org/en/free-clipart/Vector-drawing-of-search-penguin/32953.html -->
-        <figure>
-          <img class="player-screen-img" src="img/detective_penguin.svg" alt="">
-        </figure>
+         <h4 class="player-screen-title">Matching game</h4>
+         <h6 class="player-screen-subTitle">Welcome!</h6>
+         <p class="player-screen-text">The game board consists of sixteen cards arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down. The gameplay rules are very simple:
+            <br>
+            <br><span class="player-screen-text-important">flip over two hidden cards at a time to locate the ones that match!</span>
+         </p>
+         <p class="player-screen-text-switchPlayer">Want to switch a player? It's easy, just type the player's name and click play.</p>
+         <input required id="playerName" maxlength="16" type="text" placeholder="Enter your name">
+         <br>
+         <div class="player-screen-action">
+            <button class="player-screen-btn-play" type="submit">Play</button>
+            <button type="button" class="player-screen-btn-cancel">Cancel</button>
+         </div>
+         <!-- https://publicdomainvectors.org/en/free-clipart/Vector-drawing-of-search-penguin/32953.html -->
+         <figure>
+            <img class="player-screen-img" src="img/detective_penguin.svg" alt="">
+         </figure>
       </form>
       <div class="container">
          <header>
@@ -64,7 +65,7 @@
          </section>
          <!-- Score panel -->
          <div class="score-panel">
-             <!-- Timer -->
+            <!-- Timer -->
             <p id="gameboardCounter">00 : 00</p>
             <!-- Music player -->
             <audio id="backgroundMusic" controls controlsList="nodownload"></audio>
