@@ -390,7 +390,7 @@ const memoryView = {
                     }
 
                     // Game ends
-                    if (memoryModel.counter === 2) {
+                    if (memoryModel.counter === 16) {
                         // End timer
                         memoryView.timer.textContent = memoryController.endTime(startTime);
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryController.endTime(startTime), stars, memoryController.getPlayer());
