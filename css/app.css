@@ -87,9 +87,11 @@ audio {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    animation: match .3s;
 }
 .deck .card.mismatch {
     background-color: #F44336;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 /*
 * Styles for the Score Panel
@@ -242,7 +244,7 @@ audio {
 * Styles for the Leaderboard Panel
 */
 
-@keyframes fade-in {
+@-webkit-keyframes fade-in {
     from {
         opacity: 0;
     }
@@ -250,6 +252,38 @@ audio {
         opacity: 1;
     }
 }
+
+@-webkit-keyframes match {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@-webkit-keyframes shake {
+    10%, 90% {
+        -webkit-transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        -webkit-transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        -webkit-transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        -webkit-transform: translate3d(4px, 0, 0);
+    }
+}
+
 .leaderboard-container {
     width: 100%;
     overflow-y: scroll;
@@ -457,11 +491,11 @@ footer #social-media .social-media-link:hover {
     }
     .deck {
         justify-content: space-around;
+        box-shadow: none;
     }
     .deck .card {
         height: 80px;
         width: 80px;
-        box-shadow: none;
     }
     #gameboardCounter {
         padding: 0 calc(50% - 44px);
