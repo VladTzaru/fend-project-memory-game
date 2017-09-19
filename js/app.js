@@ -336,7 +336,7 @@ const memoryView = {
                     openCards.push(liElem);
 
                     // If the list already has another card, check to see if the two cards match
-                    if (openCards.length === 2) {
+                    if (openCards.length === 16) {
 
                         let card1 = openCards[0];
                         let card2 = openCards[1];
