@@ -105,7 +105,7 @@ audio {
 #gameboardCounter {
     padding: 0 calc(50% - 50px);
     font-size: 2em;
-    margin-top: 0;
+    margin: 0;
     color: #d7f3ff;
 }
 .score-panel .stars {
