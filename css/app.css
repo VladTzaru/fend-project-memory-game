@@ -125,6 +125,7 @@ audio {
 #backgroundMusic {
     margin: 0 auto;
     display: block;
+    opacity: .75;
 }
 .score-panel .restart {
     float: right;
