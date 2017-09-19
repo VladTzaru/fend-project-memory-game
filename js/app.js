@@ -270,7 +270,7 @@ const memoryView = {
         memoryController.shuffle(cards);
 
         // Start music
-        this.musicPlayer = memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[0], true);
+        memoryController.audioControl(this.musicPlayer, 0.3, true, this.song[0], true);
 
         // Card states
         const open = memoryController.openCard();
@@ -374,14 +374,14 @@ const memoryView = {
                     }
 
                     // Game ends
-                    if (memoryModel.counter === 16) {
+                    if (memoryModel.counter === 2) {
                         // End timer
                         memoryView.watch.stop();
 
                         memoryController.leaderboard(memoryController.showNumOfMoves(), memoryView.leaderboardCounter.innerHTML, stars, memoryController.getPlayer());
                         setTimeout(function() {
                             // Victory music
-                            memoryView.musicPlayer = memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
+                            memoryController.audioControl(memoryView.musicPlayer, 0.3, true, memoryView.song[1], false);
                             // If all cards have matched, display a message with the final score
                             memoryView.congratulationsPopup.style.display = 'block';
                             memoryController.hideBodyOverflow();
